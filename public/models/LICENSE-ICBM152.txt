@@ -1,0 +1,16 @@
+Copyright (C) 1993-2004 Louis Collins, McConnell Brain
+Imaging Centre, Montreal Neurological Institute, McGill University.
+Permission to use, copy, modify, and distribute this software and
+its documentation for any purpose and without fee is hereby granted,
+provided that the above copyright notice appear in all copies.  The
+authors and McGill University make no representations about the
+suitability of this software for any purpose.  It is provided "as
+is" without express or implied warranty.  The authors are not
+responsible for any data loss, equipment damage, property loss, or
+injury to subjects or patients resulting from the use or misuse of
+this software package. 
+
+---
+The file brain.glb in this directory contains surfaces derived from the MNI ICBM152 2009c
+Nonlinear Symmetric template (notice above) and the CerebrA atlas (CC0 1.0,
+https://doi.org/10.12751/g-node.be5e62). See ASSET_CREDITS.md in the project root.

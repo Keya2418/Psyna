@@ -1,0 +1,237 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", "Segoe UI", Roboto, Arial, sans-serif;
+
+  --color-page: #dde5ea;
+  --color-surface: #eaf0f3;
+  --color-ink: #13202b;
+  --color-ink-soft: #33424f;
+  --color-muted: #4a5a67;
+  --color-line: rgb(255 255 255 / 0.72);
+  --color-teal: #17a8a3;
+  --color-teal-strong: #0b6d70;
+  --color-teal-soft: #d4f1ee;
+  --color-mint: #bfe9d7;
+  --color-aqua: #c6edf3;
+  --color-icy: #dbeaf3;
+  --color-amber: #c88a1a;
+  --color-amber-strong: #845600;
+  --color-amber-soft: #f8ebcf;
+  --color-night: #111a22;
+
+  --radius-glass: 24px;
+  --radius-surface: 36px;
+
+  --shadow-glass: 0 1px 0 rgb(255 255 255 / 0.7) inset, 0 12px 40px -18px rgb(26 48 66 / 0.28);
+  --shadow-soft: 0 8px 28px -16px rgb(26 48 66 / 0.35);
+}
+
+:root {
+  color-scheme: light;
+  --glass-bg: rgb(255 255 255 / 0.5);
+  --glass-bg-strong: rgb(255 255 255 / 0.8);
+  --glass-blur: 22px;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--color-page);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* ── Application surface with broad, low-contrast gradient washes ── */
+.atlas-surface {
+  position: relative;
+  isolation: isolate;
+  background:
+    radial-gradient(60% 55% at 8% 100%, rgb(176 232 207 / 0.85) 0%, rgb(176 232 207 / 0) 70%),
+    radial-gradient(42% 48% at 58% 46%, rgb(205 240 246 / 0.95) 0%, rgb(205 240 246 / 0) 72%),
+    radial-gradient(50% 40% at 92% 8%, rgb(214 228 238 / 0.9) 0%, rgb(214 228 238 / 0) 70%),
+    linear-gradient(180deg, #e6edf1 0%, #dfe8ed 55%, #d7e2e8 100%);
+  border: 1px solid rgb(255 255 255 / 0.65);
+  box-shadow: 0 30px 80px -40px rgb(24 44 60 / 0.45), 0 1px 0 rgb(255 255 255 / 0.8) inset;
+}
+
+/* ── Glass surfaces ── */
+.glass {
+  background: var(--glass-bg);
+  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(150%);
+  backdrop-filter: blur(var(--glass-blur)) saturate(150%);
+  border: 1px solid var(--color-line);
+  box-shadow: var(--shadow-glass);
+}
+/* Panels holding body text use a more opaque surface for comfortable reading. */
+.glass-strong {
+  background: var(--glass-bg-strong);
+  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(140%);
+  backdrop-filter: blur(var(--glass-blur)) saturate(140%);
+  border: 1px solid var(--color-line);
+  box-shadow: var(--shadow-glass);
+}
+.glass-pill {
+  background: rgb(255 255 255 / 0.55);
+  -webkit-backdrop-filter: blur(16px) saturate(150%);
+  backdrop-filter: blur(16px) saturate(150%);
+  border: 1px solid rgb(255 255 255 / 0.8);
+  box-shadow: 0 6px 20px -12px rgb(26 48 66 / 0.35);
+}
+
+/* Solid fallback when backdrop blur is unavailable or the user asks for more contrast. */
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .glass { background: #f3f7f9; }
+  .glass-strong { background: #fafcfd; }
+  .glass-pill { background: #f6f9fa; }
+}
+@media (prefers-contrast: more) {
+  .glass, .glass-pill { background: #f6f9fa; backdrop-filter: none; -webkit-backdrop-filter: none; border-color: #8a9aa6; }
+  .glass-strong { background: #ffffff; backdrop-filter: none; -webkit-backdrop-filter: none; border-color: #8a9aa6; }
+}
+@media (forced-colors: active) {
+  .glass, .glass-strong, .glass-pill { border: 1px solid CanvasText; }
+}
+
+/* ── Typography ── */
+.display {
+  font-weight: 300;
+  letter-spacing: -0.035em;
+  line-height: 1.02;
+}
+.eyebrow {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+
+/* ── Focus ── */
+:focus-visible {
+  outline: 3px solid var(--color-teal-strong);
+  outline-offset: 3px;
+  border-radius: 12px;
+}
+.focus-ring-inset:focus-visible { outline-offset: -3px; }
+
+/* ── Markers ── */
+.marker {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 44px;
+  height: 44px;
+  margin: -22px 0 0 -22px;
+  display: grid;
+  place-items: center;
+  border-radius: 9999px;
+  pointer-events: auto;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  will-change: transform;
+  touch-action: manipulation;
+}
+.marker-dot {
+  position: relative;
+  width: 14px;
+  height: 14px;
+  border-radius: 9999px;
+  background: radial-gradient(circle at 35% 35%, #e9fffd 0%, #4fd6cf 45%, #10a29c 100%);
+  box-shadow: 0 0 0 2px rgb(255 255 255 / 0.95), 0 0 14px 2px rgb(41 196 189 / 0.55);
+  transition: transform 180ms ease, box-shadow 180ms ease;
+}
+.marker-dot::after {
+  content: "";
+  position: absolute;
+  inset: -7px;
+  border-radius: inherit;
+  border: 2px solid rgb(23 168 163 / 0.55);
+  animation: marker-pulse 2.6s ease-out infinite;
+}
+.marker[data-deep="true"] .marker-dot {
+  background: rgb(255 255 255 / 0.65);
+  box-shadow: 0 0 0 2px #10a29c, 0 0 12px 2px rgb(41 196 189 / 0.45);
+}
+.marker[data-deep="true"] .marker-dot::before {
+  content: "";
+  position: absolute;
+  inset: 4px;
+  border-radius: inherit;
+  background: #10a29c;
+}
+.marker:hover .marker-dot,
+.marker:focus-visible .marker-dot,
+.marker[data-selected="true"] .marker-dot {
+  transform: scale(1.3);
+  box-shadow: 0 0 0 2.5px #fff, 0 0 0 5px rgb(11 109 112 / 0.9), 0 0 18px 4px rgb(41 196 189 / 0.6);
+}
+.marker[data-dim="true"] { opacity: 0.45; }
+.marker:focus-visible { outline: none; }
+
+.marker-label {
+  position: absolute;
+  left: 50%;
+  bottom: calc(100% - 2px);
+  transform: translate(-50%, 4px);
+  white-space: nowrap;
+  padding: 6px 12px;
+  border-radius: 9999px;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--color-ink);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 160ms ease, transform 160ms ease;
+}
+.marker:hover .marker-label,
+.marker:focus-visible .marker-label,
+.marker[data-selected="true"] .marker-label {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+
+@keyframes marker-pulse {
+  0% { transform: scale(0.6); opacity: 0.9; }
+  70% { transform: scale(1.5); opacity: 0; }
+  100% { transform: scale(1.5); opacity: 0; }
+}
+
+/* Reduced motion: system setting or the in-app preference. */
+.motion-reduced .marker-dot::after { animation: none; opacity: 0.5; transform: scale(1.1); }
+.motion-reduced *, .motion-reduced *::before, .motion-reduced *::after {
+  transition-duration: 0.01ms !important;
+  animation-duration: 0.01ms !important;
+  animation-iteration-count: 1 !important;
+  scroll-behavior: auto !important;
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .marker-dot::after { animation: none; opacity: 0.5; transform: scale(1.1); }
+}
+
+/* Panel entrance — restrained. */
+.panel-enter { animation: panel-in 260ms cubic-bezier(0.2, 0.7, 0.2, 1); }
+@keyframes panel-in {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: none; }
+}
+
+/* Thin custom scrollbars inside panels. */
+.scroll-soft { scrollbar-width: thin; scrollbar-color: rgb(19 32 43 / 0.25) transparent; }
+
+.viewer-shadow {
+  background: radial-gradient(closest-side, rgb(40 80 100 / 0.22), rgb(40 80 100 / 0));
+  filter: blur(6px);
+}
+
+.sr-only-focusable:not(:focus):not(:focus-within) {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+}

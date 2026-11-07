@@ -1,0 +1,52 @@
+{
+  "name": "mind-atlas",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Mind Atlas — an educational, interactive 3D brain explorer.",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint .",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "validate:content": "vitest run src/content",
+    "check": "npm run typecheck && npm run lint && npm run test && npm run build",
+    "asset:optimize": "node scripts/asset-pipeline/optimize.mjs"
+  },
+  "dependencies": {
+    "@react-three/drei": "10.7.9",
+    "@react-three/fiber": "9.8.2",
+    "gsap": "3.15.0",
+    "next": "16.4.2",
+    "react": "19.2.9",
+    "react-dom": "19.2.9",
+    "three": "0.186.1"
+  },
+  "devDependencies": {
+    "@gltf-transform/core": "4.5.1",
+    "@gltf-transform/extensions": "4.5.1",
+    "@gltf-transform/functions": "4.5.1",
+    "@playwright/test": "^1.64.0",
+    "@tailwindcss/postcss": "4.3.3",
+    "@testing-library/dom": "10.4.1",
+    "@testing-library/jest-dom": "6.9.1",
+    "@testing-library/react": "16.3.0",
+    "@testing-library/user-event": "14.6.1",
+    "@types/node": "22.19.1",
+    "@types/react": "19.2.18",
+    "@types/react-dom": "19.2.3",
+    "@types/three": "0.186.0",
+    "@vitejs/plugin-react": "5.1.2",
+    "eslint": "10.13.0",
+    "eslint-config-next": "16.4.2",
+    "jsdom": "29.1.1",
+    "meshoptimizer": "0.25.0",
+    "playwright": "^1.64.0",
+    "tailwindcss": "4.3.3",
+    "typescript": "5.9.3",
+    "vite": "7.2.4",
+    "vitest": "4.1.12"
+  }
+}
