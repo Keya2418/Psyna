@@ -50,16 +50,19 @@ export function citationsForClaims(claimIds: string[]): Citation[] {
   return out;
 }
 
+/** A general caveat shown with every trait's brain link. */
+export const TRAIT_BRAIN_CAVEAT_ID = "trait-brain-structure-caveat";
+
+/** Claim ids for a region's research facts (the psychology). */
+export const factClaimIdsForRegion = (region: BrainRegion): string[] => [...new Set(region.facts.flatMap((f) => f.claimIds))];
+
+/** Claim ids for the brief brain-connection note, including the general caveat. */
+export const brainClaimIdsForRegion = (region: BrainRegion): string[] =>
+  [...new Set([...region.brainLink.claimIds, TRAIT_BRAIN_CAVEAT_ID])].filter((id) => !factClaimIdsForRegion(region).includes(id));
+
 /** All claim ids displayed on a region panel, in display order. */
-export function claimIdsForRegion(region: BrainRegion): string[] {
-  const ids = [
-    ...region.psychology.flatMap((p) => p.claimIds),
-    ...region.location.claimIds,
-    ...region.worksWith.flatMap((w) => w.claimIds ?? []),
-    ...region.functionClaimIds,
-    ...region.deeperClaimIds,
-  ];
-  return [...new Set(ids)];
+export function claimIdsForRegion(region: BrainRegion, { includeBrain = true } = {}): string[] {
+  return [...new Set([...factClaimIdsForRegion(region), ...(includeBrain ? brainClaimIdsForRegion(region) : [])])];
 }
 
 /** Citations actually referenced by educational content (excludes unused records). */
@@ -69,19 +72,9 @@ export function referencedCitationIds(): Set<string> {
   return ids;
 }
 
-export const lessonsForRegion = (id: RegionId) => lessons.filter((l) => regions.find((r) => r.id === id)?.relatedLessonIds.includes(l.id));
-
-export function searchRegions(query: string): BrainRegion[] {
-  const q = query.trim().toLowerCase();
-  if (!q) return regions;
-  return regions.filter((r) =>
-    [r.name, r.shortName, r.mindTag, ...r.psychology.map((p) => p.concept), ...r.keywords].some((s) => s.toLowerCase().includes(q)),
-  );
-}
-
 /** Facts about the app's own content — safe to display as metrics. */
 export const contentStats = {
-  regions: regions.length,
+  traits: regions.length,
   lessons: lessons.length,
   lessonSteps: lessons.reduce((n, l) => n + l.steps.length, 0),
   citations: referencedCitationIds().size,

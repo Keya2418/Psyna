@@ -1,51 +1,9 @@
-// Citations used by Mind Atlas.
+// Citations used by Psyna.
 // Research-paper metadata (title, authors, year, journal, DOI, PubMed Central link) was generated from
-// Crossref and PubMed records retrieved on 2026-11-04 (neuroscience sources) and 2026-11-05 (psychology sources). `verification` records only checks that were performed.
+// Crossref and PubMed records retrieved on 2026-11-04 (neuroscience sources), 2026-11-05 (psychology sources), and 2026-11-07 (trait sources). `verification` records only checks that were performed.
 import type { Citation } from "./types";
 
 export const citations: Citation[] = [
-  {
-    "id": "ninds-brain-basics",
-    "title": "Brain Basics: Know Your Brain",
-    "authors": "National Institute of Neurological Disorders and Stroke (NIH)",
-    "publisher": "NINDS",
-    "url": "https://www.ninds.nih.gov/health-information/public-education/brain-basics/brain-basics-know-your-brain",
-    "sourceType": "educational",
-    "note": "Plain-language NIH overview of the lobes and major structures; used for basic location statements.",
-    "verification": {
-      "checkedOn": "2026-11-04",
-      "checkedAgainst": "page-text",
-      "method": "Page fetched and the relevant passage read; claim wording checked against the page text."
-    }
-  },
-  {
-    "id": "qbi-lobes",
-    "title": "Lobes of the brain",
-    "authors": "Queensland Brain Institute, University of Queensland",
-    "publisher": "Queensland Brain Institute",
-    "url": "https://qbi.uq.edu.au/brain/brain-anatomy/lobes-brain",
-    "sourceType": "educational",
-    "note": "Introductory guide to the cortical lobes; used for occipital and medial temporal location statements.",
-    "verification": {
-      "checkedOn": "2026-11-04",
-      "checkedAgainst": "page-text",
-      "method": "Page fetched and the relevant passage read; claim wording checked against the page text."
-    }
-  },
-  {
-    "id": "qbi-limbic",
-    "title": "The limbic system",
-    "authors": "Queensland Brain Institute, University of Queensland",
-    "publisher": "Queensland Brain Institute",
-    "url": "https://qbi.uq.edu.au/brain/brain-anatomy/limbic-system",
-    "sourceType": "educational",
-    "note": "Introductory description of the hippocampus and amygdala, including their shapes and paired arrangement.",
-    "verification": {
-      "checkedOn": "2026-11-04",
-      "checkedAgainst": "page-text",
-      "method": "Page fetched and the relevant passage read; claim wording checked against the page text."
-    }
-  },
   {
     "id": "qbi-memory-stored",
     "title": "Where are memories stored in the brain?",
@@ -76,38 +34,6 @@ export const citations: Citation[] = [
     }
   },
   {
-    "id": "brainfacts-hemispheres",
-    "title": "The Brain Divide: A Hemispheric Hoax?",
-    "authors": "BrainFacts.org (Society for Neuroscience)",
-    "year": 2024,
-    "publisher": "BrainFacts.org",
-    "url": "https://www.brainfacts.org/brain-anatomy-and-function/anatomy/2024/the-brain-divide-a-hemispheric-hoax-111224",
-    "sourceType": "educational",
-    "note": "Introductory article explaining why people are not 'left-brained' or 'right-brained'.",
-    "verification": {
-      "checkedOn": "2026-11-04",
-      "checkedAgainst": "page-text",
-      "method": "Page fetched and the relevant passage read; claim wording checked against the page text."
-    }
-  },
-  {
-    "id": "squire-wixted-2011",
-    "title": "The Cognitive Neuroscience of Human Memory Since H.M.",
-    "authors": "Squire LR, Wixted JT",
-    "year": 2011,
-    "publisher": "Annual Review of Neuroscience",
-    "url": "https://doi.org/10.1146/annurev-neuro-061010-113720",
-    "doi": "10.1146/annurev-neuro-061010-113720",
-    "fullTextUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3192650/",
-    "sourceType": "review",
-    "note": "Review of what patient H.M. and later work revealed about medial temporal lobe structures and memory.",
-    "verification": {
-      "checkedOn": "2026-11-04",
-      "checkedAgainst": "abstract",
-      "method": "Metadata confirmed via Crossref and PubMed; claim wording checked against the published abstract."
-    }
-  },
-  {
     "id": "squire-2015-consolidation",
     "title": "Memory Consolidation",
     "authors": "Squire LR, Genzel L, Wixted JT, et al.",
@@ -126,40 +52,6 @@ export const citations: Citation[] = [
     }
   },
   {
-    "id": "scoville-milner-1957",
-    "title": "Loss of recent memory after bilateral hippocampal lesions",
-    "authors": "Scoville WB, Milner B",
-    "year": 1957,
-    "publisher": "Journal of Neurology, Neurosurgery & Psychiatry",
-    "url": "https://doi.org/10.1136/jnnp.20.1.11",
-    "doi": "10.1136/jnnp.20.1.11",
-    "fullTextUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC497229/",
-    "sourceType": "case-study",
-    "note": "The original clinical report describing memory loss after bilateral medial temporal lobe surgery (patient H.M.).",
-    "verification": {
-      "checkedOn": "2026-11-04",
-      "checkedAgainst": "metadata-only",
-      "method": "Metadata confirmed via Crossref and PubMed; no abstract available, so claim wording relies on the title and the citing reviews also listed."
-    }
-  },
-  {
-    "id": "eichenbaum-2017",
-    "title": "Prefrontal–hippocampal interactions in episodic memory",
-    "authors": "Eichenbaum H",
-    "year": 2017,
-    "publisher": "Nature Reviews Neuroscience",
-    "url": "https://doi.org/10.1038/nrn.2017.74",
-    "doi": "10.1038/nrn.2017.74",
-    "sourceType": "review",
-    "note": "Review of how prefrontal cortex and hippocampus play complementary, interacting roles in episodic memory.",
-    "animalResearch": "partly",
-    "verification": {
-      "checkedOn": "2026-11-04",
-      "checkedAgainst": "abstract",
-      "method": "Metadata confirmed via Crossref and PubMed; claim wording checked against the published abstract."
-    }
-  },
-  {
     "id": "rugg-vilberg-2013",
     "title": "Brain networks underlying episodic memory retrieval",
     "authors": "Rugg MD, Vilberg KL",
@@ -170,40 +62,6 @@ export const citations: Citation[] = [
     "fullTextUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3594562/",
     "sourceType": "review",
     "note": "Review of human imaging showing a network of cortical regions that works with the medial temporal lobe during memory retrieval.",
-    "verification": {
-      "checkedOn": "2026-11-04",
-      "checkedAgainst": "abstract",
-      "method": "Metadata confirmed via Crossref and PubMed; claim wording checked against the published abstract."
-    }
-  },
-  {
-    "id": "moser-2008",
-    "title": "Place Cells, Grid Cells, and the Brain's Spatial Representation System",
-    "authors": "Moser EI, Kropff E, Moser M-B",
-    "year": 2008,
-    "publisher": "Annual Review of Neuroscience",
-    "url": "https://doi.org/10.1146/annurev.neuro.31.061307.090723",
-    "doi": "10.1146/annurev.neuro.31.061307.090723",
-    "sourceType": "review",
-    "note": "Review of place cells and grid cells; most of this evidence comes from recordings in rodents.",
-    "animalResearch": "primarily",
-    "verification": {
-      "checkedOn": "2026-11-04",
-      "checkedAgainst": "abstract",
-      "method": "Metadata confirmed via Crossref and PubMed; claim wording checked against the published abstract."
-    }
-  },
-  {
-    "id": "maguire-2000",
-    "title": "Navigation-related structural change in the hippocampi of taxi drivers",
-    "authors": "Maguire EA, Gadian DG, Johnsrude IS, et al.",
-    "year": 2000,
-    "publisher": "Proceedings of the National Academy of Sciences",
-    "url": "https://doi.org/10.1073/pnas.070039597",
-    "doi": "10.1073/pnas.070039597",
-    "fullTextUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC18253/",
-    "sourceType": "primary-research",
-    "note": "Structural MRI study comparing hippocampal volume in London taxi drivers with control participants.",
     "verification": {
       "checkedOn": "2026-11-04",
       "checkedAgainst": "abstract",
@@ -244,23 +102,6 @@ export const citations: Citation[] = [
     }
   },
   {
-    "id": "petersen-posner-2012",
-    "title": "The Attention System of the Human Brain: 20 Years After",
-    "authors": "Petersen SE, Posner MI",
-    "year": 2012,
-    "publisher": "Annual Review of Neuroscience",
-    "url": "https://doi.org/10.1146/annurev-neuro-062111-150525",
-    "doi": "10.1146/annurev-neuro-062111-150525",
-    "fullTextUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3413263/",
-    "sourceType": "review",
-    "note": "Updated framework describing attention as several interacting brain networks.",
-    "verification": {
-      "checkedOn": "2026-11-04",
-      "checkedAgainst": "abstract",
-      "method": "Metadata confirmed via Crossref and PubMed; claim wording checked against the published abstract."
-    }
-  },
-  {
     "id": "miller-cohen-2001",
     "title": "An Integrative Theory of Prefrontal Cortex Function",
     "authors": "Miller EK, Cohen JD",
@@ -294,40 +135,6 @@ export const citations: Citation[] = [
     }
   },
   {
-    "id": "corbetta-shulman-2011",
-    "title": "Spatial Neglect and Attention Networks",
-    "authors": "Corbetta M, Shulman GL",
-    "year": 2011,
-    "publisher": "Annual Review of Neuroscience",
-    "url": "https://doi.org/10.1146/annurev-neuro-061010-113731",
-    "doi": "10.1146/annurev-neuro-061010-113731",
-    "fullTextUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3790661/",
-    "sourceType": "review",
-    "note": "Review arguing that spatial neglect reflects disrupted attention networks rather than damage to a single region.",
-    "verification": {
-      "checkedOn": "2026-11-04",
-      "checkedAgainst": "abstract",
-      "method": "Metadata confirmed via Crossref and PubMed; claim wording checked against the published abstract."
-    }
-  },
-  {
-    "id": "husain-nachev-2007",
-    "title": "Space and the parietal cortex",
-    "authors": "Husain M, Nachev P",
-    "year": 2007,
-    "publisher": "Trends in Cognitive Sciences",
-    "url": "https://doi.org/10.1016/j.tics.2006.10.011",
-    "doi": "10.1016/j.tics.2006.10.011",
-    "fullTextUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC2323620/",
-    "sourceType": "review",
-    "note": "Review showing that parietal cortex contributes to non-spatial attention as well as spatial processing and action.",
-    "verification": {
-      "checkedOn": "2026-11-04",
-      "checkedAgainst": "abstract",
-      "method": "Metadata confirmed via Crossref and PubMed; claim wording checked against the published abstract."
-    }
-  },
-  {
     "id": "phelps-ledoux-2005",
     "title": "Contributions of the Amygdala to Emotion Processing: From Animal Models to Human Behavior",
     "authors": "Phelps EA, LeDoux JE",
@@ -338,40 +145,6 @@ export const citations: Citation[] = [
     "sourceType": "review",
     "note": "Review comparing amygdala research in animals and humans across learning, memory, attention, social behaviour, and regulation.",
     "animalResearch": "partly",
-    "verification": {
-      "checkedOn": "2026-11-04",
-      "checkedAgainst": "abstract",
-      "method": "Metadata confirmed via Crossref and PubMed; claim wording checked against the published abstract."
-    }
-  },
-  {
-    "id": "ledoux-2000",
-    "title": "Emotion Circuits in the Brain",
-    "authors": "LeDoux JE",
-    "year": 2000,
-    "publisher": "Annual Review of Neuroscience",
-    "url": "https://doi.org/10.1146/annurev.neuro.23.1.155",
-    "doi": "10.1146/annurev.neuro.23.1.155",
-    "sourceType": "review",
-    "note": "Review of fear-conditioning research, largely in animals, that identified the amygdala as part of a fear-learning system.",
-    "animalResearch": "primarily",
-    "verification": {
-      "checkedOn": "2026-11-04",
-      "checkedAgainst": "abstract",
-      "method": "Metadata confirmed via Crossref and PubMed; claim wording checked against the published abstract."
-    }
-  },
-  {
-    "id": "feinstein-2011",
-    "title": "The Human Amygdala and the Induction and Experience of Fear",
-    "authors": "Feinstein JS, Adolphs R, Damasio A, et al.",
-    "year": 2011,
-    "publisher": "Current Biology",
-    "url": "https://doi.org/10.1016/j.cub.2010.11.042",
-    "doi": "10.1016/j.cub.2010.11.042",
-    "fullTextUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3030206/",
-    "sourceType": "case-study",
-    "note": "Detailed study of one person (SM) with damage to the amygdala on both sides.",
     "verification": {
       "checkedOn": "2026-11-04",
       "checkedAgainst": "abstract",
@@ -396,23 +169,6 @@ export const citations: Citation[] = [
     }
   },
   {
-    "id": "pessoa-2017",
-    "title": "A Network Model of the Emotional Brain",
-    "authors": "Pessoa L",
-    "year": 2017,
-    "publisher": "Trends in Cognitive Sciences",
-    "url": "https://doi.org/10.1016/j.tics.2017.03.002",
-    "doi": "10.1016/j.tics.2017.03.002",
-    "fullTextUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5534266/",
-    "sourceType": "review",
-    "note": "Proposes that emotion arises from large-scale interactions among cortical and subcortical systems.",
-    "verification": {
-      "checkedOn": "2026-11-04",
-      "checkedAgainst": "abstract",
-      "method": "Metadata confirmed via Crossref and PubMed; claim wording checked against the published abstract."
-    }
-  },
-  {
     "id": "mcgaugh-2004",
     "title": "The amygdala modulates the consolidation of memories of emotionally arousing experiences",
     "authors": "McGaugh JL",
@@ -423,22 +179,6 @@ export const citations: Citation[] = [
     "sourceType": "review",
     "note": "Review of animal and human evidence that the amygdala modulates how strongly emotionally arousing experiences are consolidated.",
     "animalResearch": "primarily",
-    "verification": {
-      "checkedOn": "2026-11-04",
-      "checkedAgainst": "abstract",
-      "method": "Metadata confirmed via Crossref and PubMed; claim wording checked against the published abstract."
-    }
-  },
-  {
-    "id": "ochsner-gross-2005",
-    "title": "The cognitive control of emotion",
-    "authors": "Ochsner KN, Gross JJ",
-    "year": 2005,
-    "publisher": "Trends in Cognitive Sciences",
-    "url": "https://doi.org/10.1016/j.tics.2005.03.010",
-    "doi": "10.1016/j.tics.2005.03.010",
-    "sourceType": "review",
-    "note": "Review of imaging studies on controlling emotion through attention and reappraisal.",
     "verification": {
       "checkedOn": "2026-11-04",
       "checkedAgainst": "abstract",
@@ -479,140 +219,6 @@ export const citations: Citation[] = [
     }
   },
   {
-    "id": "janak-tye-2015",
-    "title": "From circuits to behaviour in the amygdala",
-    "authors": "Janak PH, Tye KM",
-    "year": 2015,
-    "publisher": "Nature",
-    "url": "https://doi.org/10.1038/nature14188",
-    "doi": "10.1038/nature14188",
-    "fullTextUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4565157/",
-    "sourceType": "review",
-    "note": "Review of circuit studies, mainly in rodents, showing amygdala involvement in both threat- and reward-related behaviour.",
-    "animalResearch": "primarily",
-    "verification": {
-      "checkedOn": "2026-11-04",
-      "checkedAgainst": "abstract",
-      "method": "Metadata confirmed via Crossref and PubMed; claim wording checked against the published abstract."
-    }
-  },
-  {
-    "id": "grill-spector-malach-2004",
-    "title": "The human visual cortex",
-    "authors": "Grill-Spector K, Malach R",
-    "year": 2004,
-    "publisher": "Annual Review of Neuroscience",
-    "url": "https://doi.org/10.1146/annurev.neuro.27.070203.144220",
-    "doi": "10.1146/annurev.neuro.27.070203.144220",
-    "sourceType": "review",
-    "note": "Review of human imaging research on the organisation of visual cortex.",
-    "verification": {
-      "checkedOn": "2026-11-04",
-      "checkedAgainst": "abstract",
-      "method": "Metadata confirmed via Crossref and PubMed; claim wording checked against the published abstract."
-    }
-  },
-  {
-    "id": "goodale-milner-1992",
-    "title": "Separate visual pathways for perception and action",
-    "authors": "Goodale MA, Milner AD",
-    "year": 1992,
-    "publisher": "Trends in Neurosciences",
-    "url": "https://doi.org/10.1016/0166-2236(92)90344-8",
-    "doi": "10.1016/0166-2236(92)90344-8",
-    "sourceType": "review",
-    "note": "Proposes separate visual streams for recognising objects and for guiding actions toward them.",
-    "animalResearch": "partly",
-    "verification": {
-      "checkedOn": "2026-11-04",
-      "checkedAgainst": "abstract",
-      "method": "Metadata confirmed via Crossref and PubMed; claim wording checked against the published abstract."
-    }
-  },
-  {
-    "id": "kanwisher-1997",
-    "title": "The Fusiform Face Area: A Module in Human Extrastriate Cortex Specialized for Face Perception",
-    "authors": "Kanwisher N, McDermott J, Chun MM",
-    "year": 1997,
-    "publisher": "The Journal of Neuroscience",
-    "url": "https://doi.org/10.1523/JNEUROSCI.17-11-04302.1997",
-    "doi": "10.1523/JNEUROSCI.17-11-04302.1997",
-    "fullTextUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6573547/",
-    "sourceType": "primary-research",
-    "note": "fMRI study identifying a region of the fusiform gyrus that responds more to faces than to other objects in most participants.",
-    "verification": {
-      "checkedOn": "2026-11-04",
-      "checkedAgainst": "abstract",
-      "method": "Metadata confirmed via Crossref and PubMed; claim wording checked against the published abstract."
-    }
-  },
-  {
-    "id": "hickok-poeppel-2007",
-    "title": "The cortical organization of speech processing",
-    "authors": "Hickok G, Poeppel D",
-    "year": 2007,
-    "publisher": "Nature Reviews Neuroscience",
-    "url": "https://doi.org/10.1038/nrn2113",
-    "doi": "10.1038/nrn2113",
-    "sourceType": "review",
-    "note": "Dual-stream model of how speech is processed across temporal and frontal cortex.",
-    "verification": {
-      "checkedOn": "2026-11-04",
-      "checkedAgainst": "abstract",
-      "method": "Metadata confirmed via Crossref and PubMed; claim wording checked against the published abstract."
-    }
-  },
-  {
-    "id": "binder-desai-2011",
-    "title": "The neurobiology of semantic memory",
-    "authors": "Binder JR, Desai RH",
-    "year": 2011,
-    "publisher": "Trends in Cognitive Sciences",
-    "url": "https://doi.org/10.1016/j.tics.2011.10.001",
-    "doi": "10.1016/j.tics.2011.10.001",
-    "fullTextUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3350748/",
-    "sourceType": "review",
-    "note": "Review of imaging evidence on how temporal and inferior parietal regions support knowledge about the world (semantic memory).",
-    "verification": {
-      "checkedOn": "2026-11-04",
-      "checkedAgainst": "abstract",
-      "method": "Metadata confirmed via Crossref and PubMed; claim wording checked against the published abstract."
-    }
-  },
-  {
-    "id": "wandell-2007",
-    "title": "Visual Field Maps in Human Cortex",
-    "authors": "Wandell BA, Dumoulin SO, Brewer AA",
-    "year": 2007,
-    "publisher": "Neuron",
-    "url": "https://doi.org/10.1016/j.neuron.2007.10.012",
-    "doi": "10.1016/j.neuron.2007.10.012",
-    "sourceType": "review",
-    "note": "Review of visual field maps measured in human occipital and parietal cortex.",
-    "verification": {
-      "checkedOn": "2026-11-04",
-      "checkedAgainst": "abstract",
-      "method": "Metadata confirmed via Crossref and PubMed; claim wording checked against the published abstract."
-    }
-  },
-  {
-    "id": "nielsen-2013",
-    "title": "An Evaluation of the Left-Brain vs. Right-Brain Hypothesis with Resting State Functional Connectivity Magnetic Resonance Imaging",
-    "authors": "Nielsen JA, Zielinski BA, Ferguson MA, et al.",
-    "year": 2013,
-    "publisher": "PLoS ONE",
-    "url": "https://doi.org/10.1371/journal.pone.0071275",
-    "doi": "10.1371/journal.pone.0071275",
-    "fullTextUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3743825/",
-    "sourceType": "primary-research",
-    "note": "Resting-state imaging of 1,011 people testing the idea of 'left-brained' and 'right-brained' individuals.",
-    "verification": {
-      "checkedOn": "2026-11-04",
-      "checkedAgainst": "abstract",
-      "method": "Metadata confirmed via Crossref and PubMed; claim wording checked against the published abstract."
-    }
-  },
-  {
     "id": "poldrack-2006",
     "title": "Can cognitive processes be inferred from neuroimaging data?",
     "authors": "Poldrack RA",
@@ -639,40 +245,6 @@ export const citations: Citation[] = [
     "fullTextUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3746075/",
     "sourceType": "primary-research",
     "note": "Imaging study showing that brain connectivity differs between individuals, especially in association cortex.",
-    "verification": {
-      "checkedOn": "2026-11-04",
-      "checkedAgainst": "abstract",
-      "method": "Metadata confirmed via Crossref and PubMed; claim wording checked against the published abstract."
-    }
-  },
-  {
-    "id": "adolphs-2013",
-    "title": "The Biology of Fear",
-    "authors": "Adolphs R",
-    "year": 2013,
-    "publisher": "Current Biology",
-    "url": "https://doi.org/10.1016/j.cub.2012.11.055",
-    "doi": "10.1016/j.cub.2012.11.055",
-    "fullTextUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3595162/",
-    "sourceType": "review",
-    "note": "Review describing open debates about how fear should be defined and studied across species.",
-    "animalResearch": "partly",
-    "verification": {
-      "checkedOn": "2026-11-04",
-      "checkedAgainst": "abstract",
-      "method": "Metadata confirmed via Crossref and PubMed; claim wording checked against the published abstract."
-    }
-  },
-  {
-    "id": "dolcos-2004",
-    "title": "Interaction between the Amygdala and the Medial Temporal Lobe Memory System Predicts Better Memory for Emotional Events",
-    "authors": "Dolcos F, LaBar KS, Cabeza R",
-    "year": 2004,
-    "publisher": "Neuron",
-    "url": "https://doi.org/10.1016/S0896-6273(04)00289-2",
-    "doi": "10.1016/S0896-6273(04)00289-2",
-    "sourceType": "primary-research",
-    "note": "fMRI study linking amygdala and medial temporal lobe activity during encoding to better memory for emotional pictures.",
     "verification": {
       "checkedOn": "2026-11-04",
       "checkedAgainst": "abstract",
@@ -713,58 +285,6 @@ export const citations: Citation[] = [
     }
   },
   {
-    "id": "badre-nee-2018",
-    "title": "Frontal Cortex and the Hierarchical Control of Behavior",
-    "authors": "Badre D, Nee DE",
-    "year": 2018,
-    "publisher": "Trends in Cognitive Sciences",
-    "url": "https://doi.org/10.1016/j.tics.2017.11.005",
-    "doi": "10.1016/j.tics.2017.11.005",
-    "fullTextUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5841250/",
-    "sourceType": "review",
-    "note": "Review concluding that lateral frontal cortex works as interacting networks rather than one unit.",
-    "verification": {
-      "checkedOn": "2026-11-04",
-      "checkedAgainst": "abstract",
-      "method": "Metadata confirmed via Crossref and PubMed; claim wording checked against the published abstract."
-    }
-  },
-  {
-    "id": "bisley-goldberg-2010",
-    "title": "Attention, Intention, and Priority in the Parietal Lobe",
-    "authors": "Bisley JW, Goldberg ME",
-    "year": 2010,
-    "publisher": "Annual Review of Neuroscience",
-    "url": "https://doi.org/10.1146/annurev-neuro-060909-152823",
-    "doi": "10.1146/annurev-neuro-060909-152823",
-    "fullTextUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3683564/",
-    "sourceType": "review",
-    "note": "Review of recordings in monkeys suggesting an intraparietal area acts like a 'priority map' for attention and eye movements.",
-    "animalResearch": "primarily",
-    "verification": {
-      "checkedOn": "2026-11-04",
-      "checkedAgainst": "abstract",
-      "method": "Metadata confirmed via Crossref and PubMed; claim wording checked against the published abstract."
-    }
-  },
-  {
-    "id": "moscovitch-2016",
-    "title": "Episodic Memory and Beyond: The Hippocampus and Neocortex in Transformation",
-    "authors": "Moscovitch M, Cabeza R, Winocur G, et al.",
-    "year": 2016,
-    "publisher": "Annual Review of Psychology",
-    "url": "https://doi.org/10.1146/annurev-psych-113011-143733",
-    "doi": "10.1146/annurev-psych-113011-143733",
-    "fullTextUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5060006/",
-    "sourceType": "review",
-    "note": "Review of how episodic memories may transform over time and how the hippocampus interacts with neocortex.",
-    "verification": {
-      "checkedOn": "2026-11-04",
-      "checkedAgainst": "abstract",
-      "method": "Metadata confirmed via Crossref and PubMed; claim wording checked against the published abstract."
-    }
-  },
-  {
     "id": "haynes-rees-2006",
     "title": "Decoding mental states from brain activity in humans",
     "authors": "Haynes J-D, Rees G",
@@ -781,40 +301,6 @@ export const citations: Citation[] = [
     }
   },
   {
-    "id": "diekelmann-born-2010",
-    "title": "The memory function of sleep",
-    "authors": "Diekelmann S, Born J",
-    "year": 2010,
-    "publisher": "Nature Reviews Neuroscience",
-    "url": "https://doi.org/10.1038/nrn2762",
-    "doi": "10.1038/nrn2762",
-    "sourceType": "review",
-    "note": "Review of evidence that sleep supports memory consolidation.",
-    "animalResearch": "partly",
-    "verification": {
-      "checkedOn": "2026-11-04",
-      "checkedAgainst": "abstract",
-      "method": "Metadata confirmed via Crossref and PubMed; claim wording checked against the published abstract."
-    }
-  },
-  {
-    "id": "kensinger-2009",
-    "title": "Remembering the Details: Effects of Emotion",
-    "authors": "Kensinger EA",
-    "year": 2009,
-    "publisher": "Emotion Review",
-    "url": "https://doi.org/10.1177/1754073908100432",
-    "doi": "10.1177/1754073908100432",
-    "fullTextUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC2676782/",
-    "sourceType": "review",
-    "note": "Review showing that emotion enhances memory for some details of an event more than others.",
-    "verification": {
-      "checkedOn": "2026-11-04",
-      "checkedAgainst": "abstract",
-      "method": "Metadata confirmed via Crossref and PubMed; claim wording checked against the published abstract."
-    }
-  },
-  {
     "id": "phelps-2004",
     "title": "Human emotion and memory: interactions of the amygdala and hippocampal complex",
     "authors": "Phelps EA",
@@ -824,39 +310,6 @@ export const citations: Citation[] = [
     "doi": "10.1016/j.conb.2004.03.015",
     "sourceType": "review",
     "note": "Review of how the amygdala and hippocampus interact when emotion and memory meet.",
-    "verification": {
-      "checkedOn": "2026-11-04",
-      "checkedAgainst": "abstract",
-      "method": "Metadata confirmed via Crossref and PubMed; claim wording checked against the published abstract."
-    }
-  },
-  {
-    "id": "etkin-2015",
-    "title": "The neural bases of emotion regulation",
-    "authors": "Etkin A, Büchel C, Gross JJ",
-    "year": 2015,
-    "publisher": "Nature Reviews Neuroscience",
-    "url": "https://doi.org/10.1038/nrn4044",
-    "doi": "10.1038/nrn4044",
-    "sourceType": "review",
-    "note": "Review of brain regions implicated in emotion regulation and a framework linking them.",
-    "verification": {
-      "checkedOn": "2026-11-04",
-      "checkedAgainst": "abstract",
-      "method": "Metadata confirmed via Crossref and PubMed; claim wording checked against the published abstract."
-    }
-  },
-  {
-    "id": "menon-uddin-2010",
-    "title": "Saliency, switching, attention and control: a network model of insula function",
-    "authors": "Menon V, Uddin LQ",
-    "year": 2010,
-    "publisher": "Brain Structure and Function",
-    "url": "https://doi.org/10.1007/s00429-010-0262-0",
-    "doi": "10.1007/s00429-010-0262-0",
-    "fullTextUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC2899886/",
-    "sourceType": "review",
-    "note": "Network model in which the insula and anterior cingulate help mark salient events for further processing.",
     "verification": {
       "checkedOn": "2026-11-04",
       "checkedAgainst": "abstract",
@@ -891,40 +344,6 @@ export const citations: Citation[] = [
     "fullTextUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC2962759/",
     "sourceType": "dataset",
     "note": "Describes construction of the MNI ICBM152 average brain templates; the 3D surface is derived from the 2009c template.",
-    "verification": {
-      "checkedOn": "2026-11-04",
-      "checkedAgainst": "abstract",
-      "method": "Metadata confirmed via Crossref and PubMed; claim wording checked against the published abstract."
-    }
-  },
-  {
-    "id": "duncan-2010",
-    "title": "The multiple-demand (MD) system of the primate brain: mental programs for intelligent behaviour",
-    "authors": "Duncan J",
-    "year": 2010,
-    "publisher": "Trends in Cognitive Sciences",
-    "url": "https://doi.org/10.1016/j.tics.2010.01.004",
-    "doi": "10.1016/j.tics.2010.01.004",
-    "sourceType": "review",
-    "note": "Review of a 'multiple-demand' pattern of frontal and parietal activity seen across many demanding tasks.",
-    "animalResearch": "partly",
-    "verification": {
-      "checkedOn": "2026-11-04",
-      "checkedAgainst": "abstract",
-      "method": "Metadata confirmed via Crossref and PubMed; claim wording checked against the published abstract."
-    }
-  },
-  {
-    "id": "seeley-2007",
-    "title": "Dissociable Intrinsic Connectivity Networks for Salience Processing and Executive Control",
-    "authors": "Seeley WW, Menon V, Schatzberg AF, et al.",
-    "year": 2007,
-    "publisher": "The Journal of Neuroscience",
-    "url": "https://doi.org/10.1523/JNEUROSCI.5587-06.2007",
-    "doi": "10.1523/JNEUROSCI.5587-06.2007",
-    "fullTextUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC2680293/",
-    "sourceType": "primary-research",
-    "note": "Resting-state imaging study identifying a 'salience network' anchored in anterior cingulate and frontoinsular cortex.",
     "verification": {
       "checkedOn": "2026-11-04",
       "checkedAgainst": "abstract",
@@ -1024,22 +443,6 @@ export const citations: Citation[] = [
     "doi": "10.1177/1529100612453266",
     "sourceType": "review",
     "note": "Large review rating ten popular study techniques by how well the evidence supports them.",
-    "verification": {
-      "checkedOn": "2026-11-05",
-      "checkedAgainst": "abstract",
-      "method": "Metadata confirmed via Crossref and PubMed; claim wording checked against the published abstract."
-    }
-  },
-  {
-    "id": "tulving-2002",
-    "title": "Episodic Memory: From Mind to Brain",
-    "authors": "Tulving E",
-    "year": 2002,
-    "publisher": "Annual Review of Psychology",
-    "url": "https://doi.org/10.1146/annurev.psych.53.100901.135114",
-    "doi": "10.1146/annurev.psych.53.100901.135114",
-    "sourceType": "review",
-    "note": "Tulving's own account of episodic memory, the system for remembering personal experiences.",
     "verification": {
       "checkedOn": "2026-11-05",
       "checkedAgainst": "abstract",
@@ -1316,6 +719,302 @@ export const citations: Citation[] = [
     "note": "Presents the theory of constructed emotion, a brain-based account of what emotions are.",
     "verification": {
       "checkedOn": "2026-11-05",
+      "checkedAgainst": "abstract",
+      "method": "Metadata confirmed via Crossref and PubMed; claim wording checked against the published abstract."
+    }
+  },
+  {
+    "id": "moffitt-2011",
+    "title": "A gradient of childhood self-control predicts health, wealth, and public safety",
+    "authors": "Moffitt TE, Arseneault L, Belsky D, et al.",
+    "year": 2011,
+    "publisher": "Proceedings of the National Academy of Sciences",
+    "url": "https://doi.org/10.1073/pnas.1010076108",
+    "doi": "10.1073/pnas.1010076108",
+    "fullTextUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3041102/",
+    "sourceType": "primary-research",
+    "note": "Followed 1,000 children from birth to age 32 to test whether childhood self-control predicts adult outcomes.",
+    "verification": {
+      "checkedOn": "2026-11-07",
+      "checkedAgainst": "abstract",
+      "method": "Metadata confirmed via Crossref and PubMed; claim wording checked against the published abstract."
+    }
+  },
+  {
+    "id": "roberts-2007",
+    "title": "The Power of Personality: The Comparative Validity of Personality Traits, Socioeconomic Status, and Cognitive Ability for Predicting Important Life Outcomes",
+    "authors": "Roberts BW, Kuncel NR, Shiner R, Caspi A, Goldberg LR",
+    "year": 2007,
+    "publisher": "Perspectives on Psychological Science",
+    "url": "https://doi.org/10.1111/j.1745-6916.2007.00047.x",
+    "doi": "10.1111/j.1745-6916.2007.00047.x",
+    "fullTextUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4499872/",
+    "sourceType": "review",
+    "note": "Review of prospective studies comparing personality traits with social class and cognitive ability as predictors of life outcomes.",
+    "verification": {
+      "checkedOn": "2026-11-07",
+      "checkedAgainst": "abstract",
+      "method": "Metadata confirmed via Crossref and PubMed; claim wording checked against the published abstract."
+    }
+  },
+  {
+    "id": "mischel-1989",
+    "title": "Delay of Gratification in Children",
+    "authors": "Mischel W, Shoda Y, Rodriguez ML",
+    "year": 1989,
+    "publisher": "Science",
+    "url": "https://doi.org/10.1126/science.2658056",
+    "doi": "10.1126/science.2658056",
+    "sourceType": "review",
+    "note": "Overview of the original “marshmallow test” research programme on children's ability to wait for a larger reward.",
+    "verification": {
+      "checkedOn": "2026-11-07",
+      "checkedAgainst": "abstract",
+      "method": "Metadata confirmed via Crossref and PubMed; claim wording checked against the published abstract."
+    }
+  },
+  {
+    "id": "watts-2018",
+    "title": "Revisiting the Marshmallow Test: A Conceptual Replication Investigating Links Between Early Delay of Gratification and Later Outcomes",
+    "authors": "Watts TW, Duncan GJ, Quan H",
+    "year": 2018,
+    "publisher": "Psychological Science",
+    "url": "https://doi.org/10.1177/0956797618761661",
+    "doi": "10.1177/0956797618761661",
+    "fullTextUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6050075/",
+    "sourceType": "primary-research",
+    "note": "A larger, more diverse follow-up of the marshmallow test that controlled for family background.",
+    "verification": {
+      "checkedOn": "2026-11-07",
+      "checkedAgainst": "abstract",
+      "method": "Metadata confirmed via Crossref and PubMed; claim wording checked against the published abstract."
+    }
+  },
+  {
+    "id": "roberts-2006",
+    "title": "Patterns of mean-level change in personality traits across the life course: A meta-analysis of longitudinal studies",
+    "authors": "Roberts BW, Walton KE, Viechtbauer W",
+    "year": 2006,
+    "publisher": "Psychological Bulletin",
+    "url": "https://doi.org/10.1037/0033-2909.132.1.1",
+    "doi": "10.1037/0033-2909.132.1.1",
+    "sourceType": "meta-analysis",
+    "note": "Meta-analysis of 92 longitudinal samples tracking how personality traits change with age.",
+    "verification": {
+      "checkedOn": "2026-11-07",
+      "checkedAgainst": "abstract",
+      "method": "Metadata confirmed via Crossref and PubMed; claim wording checked against the published abstract."
+    }
+  },
+  {
+    "id": "avinun-2020",
+    "title": "Little evidence for associations between the Big Five personality traits and variability in brain gray or white matter",
+    "authors": "Avinun R, Israel S, Knodt AR, Hariri AR",
+    "year": 2020,
+    "publisher": "NeuroImage",
+    "url": "https://doi.org/10.1016/j.neuroimage.2020.117092",
+    "doi": "10.1016/j.neuroimage.2020.117092",
+    "fullTextUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7593529/",
+    "sourceType": "primary-research",
+    "note": "Large brain-imaging study (1,107 students) testing whether personality traits relate to brain structure.",
+    "verification": {
+      "checkedOn": "2026-11-07",
+      "checkedAgainst": "abstract",
+      "method": "Metadata confirmed via Crossref and PubMed; claim wording checked against the published abstract."
+    }
+  },
+  {
+    "id": "smallwood-schooler-2015",
+    "title": "The Science of Mind Wandering: Empirically Navigating the Stream of Consciousness",
+    "authors": "Smallwood J, Schooler JW",
+    "year": 2015,
+    "publisher": "Annual Review of Psychology",
+    "url": "https://doi.org/10.1146/annurev-psych-010814-015331",
+    "doi": "10.1146/annurev-psych-010814-015331",
+    "sourceType": "review",
+    "note": "Review of what mind-wandering is, what it costs, and what it may be good for.",
+    "verification": {
+      "checkedOn": "2026-11-07",
+      "checkedAgainst": "abstract",
+      "method": "Metadata confirmed via Crossref and PubMed; claim wording checked against the published abstract."
+    }
+  },
+  {
+    "id": "baird-2012",
+    "title": "Inspired by Distraction: Mind Wandering Facilitates Creative Incubation",
+    "authors": "Baird B, Smallwood J, Mrazek MD, et al.",
+    "year": 2012,
+    "publisher": "Psychological Science",
+    "url": "https://doi.org/10.1177/0956797612446024",
+    "doi": "10.1177/0956797612446024",
+    "sourceType": "primary-research",
+    "note": "Experiment testing whether a break that lets the mind wander improves creative problem solving.",
+    "verification": {
+      "checkedOn": "2026-11-07",
+      "checkedAgainst": "abstract",
+      "method": "Metadata confirmed via Crossref and PubMed; claim wording checked against the published abstract."
+    }
+  },
+  {
+    "id": "christoff-2009",
+    "title": "Experience sampling during fMRI reveals default network and executive system contributions to mind wandering",
+    "authors": "Christoff K, Gordon AM, Smallwood J, Smith R, Schooler JW",
+    "year": 2009,
+    "publisher": "Proceedings of the National Academy of Sciences",
+    "url": "https://doi.org/10.1073/pnas.0900234106",
+    "doi": "10.1073/pnas.0900234106",
+    "fullTextUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC2689035/",
+    "sourceType": "primary-research",
+    "note": "Brain-imaging study that asked people, during a task, whether their minds had wandered.",
+    "verification": {
+      "checkedOn": "2026-11-07",
+      "checkedAgainst": "abstract",
+      "method": "Metadata confirmed via Crossref and PubMed; claim wording checked against the published abstract."
+    }
+  },
+  {
+    "id": "wellman-2001",
+    "title": "Meta-Analysis of Theory-of-Mind Development: The Truth about False Belief",
+    "authors": "Wellman HM, Cross D, Watson J",
+    "year": 2001,
+    "publisher": "Child Development",
+    "url": "https://doi.org/10.1111/1467-8624.00304",
+    "doi": "10.1111/1467-8624.00304",
+    "sourceType": "meta-analysis",
+    "note": "Meta-analysis of 178 studies of when children come to understand that other people can hold false beliefs.",
+    "verification": {
+      "checkedOn": "2026-11-07",
+      "checkedAgainst": "abstract",
+      "method": "Metadata confirmed via Crossref and PubMed; claim wording checked against the published abstract."
+    }
+  },
+  {
+    "id": "konrath-2011",
+    "title": "Changes in Dispositional Empathy in American College Students Over Time: A Meta-Analysis",
+    "authors": "Konrath SH, O'Brien EH, Hsing C",
+    "year": 2011,
+    "publisher": "Personality and Social Psychology Review",
+    "url": "https://doi.org/10.1177/1088868310377395",
+    "doi": "10.1177/1088868310377395",
+    "sourceType": "meta-analysis",
+    "note": "Cross-temporal meta-analysis of empathy questionnaire scores from 1979 to 2009.",
+    "verification": {
+      "checkedOn": "2026-11-07",
+      "checkedAgainst": "abstract",
+      "method": "Metadata confirmed via Crossref and PubMed; claim wording checked against the published abstract."
+    }
+  },
+  {
+    "id": "saxe-kanwisher-2003",
+    "title": "People thinking about thinking people: The role of the temporo-parietal junction in “theory of mind”",
+    "authors": "Saxe R, Kanwisher N",
+    "year": 2003,
+    "publisher": "NeuroImage",
+    "url": "https://doi.org/10.1016/S1053-8119(03)00230-1",
+    "doi": "10.1016/S1053-8119(03)00230-1",
+    "sourceType": "primary-research",
+    "note": "Imaging study of a brain area that responds when people reason about what others believe.",
+    "verification": {
+      "checkedOn": "2026-11-07",
+      "checkedAgainst": "abstract",
+      "method": "Metadata confirmed via Crossref and PubMed; claim wording checked against the published abstract."
+    }
+  },
+  {
+    "id": "zeman-2015",
+    "title": "Lives without imagery – Congenital aphantasia",
+    "authors": "Zeman A, Dewar M, Della Sala S",
+    "year": 2015,
+    "publisher": "Cortex",
+    "url": "https://doi.org/10.1016/j.cortex.2015.05.019",
+    "doi": "10.1016/j.cortex.2015.05.019",
+    "sourceType": "case-study",
+    "note": "Short report that named “aphantasia”: a lifelong absence of voluntary visual imagery.",
+    "verification": {
+      "checkedOn": "2026-11-07",
+      "checkedAgainst": "metadata-only",
+      "method": "Metadata confirmed via Crossref and PubMed; no abstract available, so claim wording relies on the title and the review also cited with it."
+    }
+  },
+  {
+    "id": "pearson-2019",
+    "title": "The human imagination: the cognitive neuroscience of visual mental imagery",
+    "authors": "Pearson J",
+    "year": 2019,
+    "publisher": "Nature Reviews Neuroscience",
+    "url": "https://doi.org/10.1038/s41583-019-0202-9",
+    "doi": "10.1038/s41583-019-0202-9",
+    "sourceType": "review",
+    "note": "Review of how visual mental imagery works, how much it varies between people, and the brain areas involved.",
+    "verification": {
+      "checkedOn": "2026-11-07",
+      "checkedAgainst": "abstract",
+      "method": "Metadata confirmed via Crossref and PubMed; claim wording checked against the published abstract."
+    }
+  },
+  {
+    "id": "wildschut-2006",
+    "title": "Nostalgia: Content, triggers, functions",
+    "authors": "Wildschut T, Sedikides C, Arndt J, Routledge C",
+    "year": 2006,
+    "publisher": "Journal of Personality and Social Psychology",
+    "url": "https://doi.org/10.1037/0022-3514.91.5.975",
+    "doi": "10.1037/0022-3514.91.5.975",
+    "sourceType": "primary-research",
+    "note": "Seven studies on what nostalgic memories are about, what triggers them, and what they do for us.",
+    "verification": {
+      "checkedOn": "2026-11-07",
+      "checkedAgainst": "abstract",
+      "method": "Metadata confirmed via Crossref and PubMed; claim wording checked against the published abstract."
+    }
+  },
+  {
+    "id": "schacter-addis-2007",
+    "title": "The cognitive neuroscience of constructive memory: remembering the past and imagining the future",
+    "authors": "Schacter DL, Addis DR",
+    "year": 2007,
+    "publisher": "Philosophical Transactions of the Royal Society B",
+    "url": "https://doi.org/10.1098/rstb.2007.2087",
+    "doi": "10.1098/rstb.2007.2087",
+    "fullTextUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC2429996/",
+    "sourceType": "review",
+    "note": "Review proposing that memory is constructive so that we can imagine the future.",
+    "verification": {
+      "checkedOn": "2026-11-07",
+      "checkedAgainst": "abstract",
+      "method": "Metadata confirmed via Crossref and PubMed; claim wording checked against the published abstract."
+    }
+  },
+  {
+    "id": "hassabis-2007",
+    "title": "Patients with hippocampal amnesia cannot imagine new experiences",
+    "authors": "Hassabis D, Kumaran D, Vann SD, Maguire EA",
+    "year": 2007,
+    "publisher": "Proceedings of the National Academy of Sciences",
+    "url": "https://doi.org/10.1073/pnas.0610561104",
+    "doi": "10.1073/pnas.0610561104",
+    "fullTextUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC1773058/",
+    "sourceType": "primary-research",
+    "note": "Study of whether people with hippocampal damage can imagine new everyday scenes.",
+    "verification": {
+      "checkedOn": "2026-11-07",
+      "checkedAgainst": "abstract",
+      "method": "Metadata confirmed via Crossref and PubMed; claim wording checked against the published abstract."
+    }
+  },
+  {
+    "id": "lahey-2009",
+    "title": "Public health significance of neuroticism",
+    "authors": "Lahey BB",
+    "year": 2009,
+    "publisher": "American Psychologist",
+    "url": "https://doi.org/10.1037/a0015309",
+    "doi": "10.1037/a0015309",
+    "fullTextUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC2792076/",
+    "sourceType": "review",
+    "note": "Review of neuroticism as a personality trait and its links to mental and physical health.",
+    "verification": {
+      "checkedOn": "2026-11-07",
       "checkedAgainst": "abstract",
       "method": "Metadata confirmed via Crossref and PubMed; claim wording checked against the published abstract."
     }

@@ -2,9 +2,9 @@ import type { Metadata, Viewport } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Mind Atlas — The psychology of everyday life",
+  title: "Psyna — The psychology of everyday life",
   description:
-    "An educational, interactive 3D brain. Explore the psychology of memory, attention, and emotion — and the brain areas that support them — with sources for every claim.",
+    "An educational, interactive 3D brain. Select any part to discover a psychological trait, from self-control to empathy, with a research source for every claim.",
 };
 
 export const viewport: Viewport = {

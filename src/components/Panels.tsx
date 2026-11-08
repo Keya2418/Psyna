@@ -22,7 +22,7 @@ function useFocusOnChange<T extends HTMLElement>(key: string) {
   return ref;
 }
 
-export function WelcomePanel({ onExplore, onLessons }: { onExplore: () => void; onLessons: () => void }) {
+export function WelcomePanel({ onExplore }: { onExplore: () => void }) {
   return (
     <div className="panel-enter flex h-full flex-col">
       <p className="eyebrow mb-4">An interactive psychology exhibit</p>
@@ -32,21 +32,19 @@ export function WelcomePanel({ onExplore, onLessons }: { onExplore: () => void; 
         <span className="font-normal italic tracking-[-0.03em]">Understand</span> everyday life.
       </h1>
       <p className="mt-5 max-w-md text-[1.0625rem] leading-relaxed text-ink-soft">
-        Discover the psychology of memory, attention, and emotion — and the brain areas that support them.
+        Select any part of the brain to discover a psychological trait, from self-control to empathy to nostalgia,
+        explained through published research.
       </p>
       <div className="mt-7 flex flex-wrap items-center gap-3">
         <Button variant="primary" onClick={onExplore}>
           Explore the brain
           <ArrowDisc />
         </Button>
-        <Button variant="ghost" onClick={onLessons} className="underline decoration-ink/25 underline-offset-4 hover:decoration-ink">
-          Start a guided lesson
-        </Button>
       </div>
 
       <dl className="mt-8 grid max-w-md grid-cols-3 gap-4 border-b border-white/80 pb-5">
         {[
-          [contentStats.regions, "Brain areas"],
+          [contentStats.traits, "Traits"],
           [contentStats.lessons, "Guided lessons"],
           [contentStats.citations, "Cited sources"],
         ].map(([n, label]) => (
@@ -57,10 +55,7 @@ export function WelcomePanel({ onExplore, onLessons }: { onExplore: () => void; 
           </div>
         ))}
       </dl>
-      <p className="mt-5 max-w-md text-[1.0625rem] font-light uppercase leading-snug tracking-[0.03em] text-ink-soft">
-        Memory · Attention · Emotion
-        <span className="mt-1 block text-[0.875rem] normal-case tracking-normal text-muted">Explained through psychology research, with a source for every claim.</span>
-      </p>
+      <p className="mt-5 max-w-md text-[0.875rem] text-muted">Explained through psychology research, with a source for every claim.</p>
     </div>
   );
 }
@@ -92,10 +87,10 @@ export function LessonPicker({ completed, onStart, onClose }: { completed: Lesso
                 className="group flex w-full items-center gap-4 rounded-[20px] border border-white/80 bg-white/60 p-4 text-left transition-colors hover:bg-white/90"
               >
                 <span className="min-w-0 flex-1">
-                  <span className="flex items-center gap-2 text-[0.75rem] font-semibold uppercase tracking-[0.08em] text-amber-strong">
+                  <span className="eyebrow block !text-amber-strong">
                     {l.topic} · {l.steps.length} steps · ~{l.estimatedMinutes} min
                     {done && (
-                      <span className="inline-flex items-center gap-1 rounded-full bg-amber-soft px-2 py-0.5 normal-case tracking-normal">
+                      <span className="ml-2 inline-flex items-center gap-1 rounded-full bg-amber-soft px-2 py-0.5 align-middle normal-case [font-variant-caps:normal] tracking-normal">
                         <Icon.Check width={12} height={12} /> Completed
                       </span>
                     )}
@@ -250,14 +245,12 @@ export function RegionPanel({
   inLesson,
   onClose,
   onResumeLesson,
-  onSelectRegion,
   onStartLesson,
 }: {
   regionId: RegionId;
   inLesson: boolean;
   onClose: () => void;
   onResumeLesson: () => void;
-  onSelectRegion: (id: RegionId) => void;
   onStartLesson: (id: LessonId) => void;
 }) {
   const region = getRegion(regionId);
@@ -271,14 +264,14 @@ export function RegionPanel({
             <Icon.ArrowLeft width={14} height={14} /> Back to lesson
           </Button>
         ) : (
-          <span className="text-[0.8125rem] font-medium text-teal-strong">Selected region</span>
+          <span className="text-[0.8125rem] font-medium text-teal-strong">Selected brain area</span>
         )}
         <button type="button" onClick={onClose} className="grid size-11 place-items-center rounded-full hover:bg-white/70" aria-label={`Close ${region.name} details`}>
           <Icon.Close />
         </button>
       </div>
-      <div ref={headingWrap} tabIndex={-1} className="outline-none" aria-label={`${region.name} details`}>
-        <RegionDetails region={region} idPrefix={`panel-${region.id}`} onSelectRegion={onSelectRegion} onStartLesson={onStartLesson} />
+      <div ref={headingWrap} tabIndex={-1} className="outline-none" aria-label={`${region.trait} (${region.name}) details`}>
+        <RegionDetails region={region} idPrefix={`panel-${region.id}`} onStartLesson={onStartLesson} />
       </div>
     </div>
   );

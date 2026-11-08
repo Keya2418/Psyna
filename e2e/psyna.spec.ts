@@ -11,20 +11,20 @@ test.describe("desktop", () => {
     await ready(page);
     await expect(page.locator("canvas")).toBeVisible();
 
-    // Keyboard: focus a region in the list and activate it with Enter.
-    const list = page.getByRole("region", { name: "Brain regions" }).last();
-    await list.getByRole("button", { name: /Occipital cortex/ }).focus();
+    // Keyboard: focus a brain-area marker and activate it with Enter.
+    const marker = page.locator('.marker[aria-label^="Self-control: Prefrontal cortex"]').locator("visible=true").first();
+    await marker.focus();
     await page.keyboard.press("Enter");
-    await expect(panel(page).getByRole("heading", { level: 2, name: "Occipital cortex" })).toBeVisible();
-    await expect(list.getByRole("button", { name: /Occipital cortex/ })).toHaveAttribute("aria-pressed", "true");
+    await expect(panel(page).getByRole("heading", { level: 2, name: "Self-control" })).toBeVisible();
+    await expect(marker).toHaveAttribute("aria-pressed", "true");
 
-    // Focus indicator is visible on the focused control.
-    const outline = await page.evaluate(() => getComputedStyle(document.activeElement!).outlineStyle);
-    expect(["solid", "auto"]).toContain(outline);
+    // Focus indicator is visible on the focused marker (a ring around its dot).
+    const ring = await page.evaluate(() => getComputedStyle(document.activeElement!.querySelector(".marker-dot")!).boxShadow);
+    expect(ring).not.toBe("none");
 
     // Close via keyboard-reachable button.
-    await panel(page).getByRole("button", { name: "Close Occipital cortex details" }).click();
-    await expect(panel(page).getByRole("heading", { level: 2, name: "Occipital cortex" })).toHaveCount(0);
+    await panel(page).getByRole("button", { name: "Close Prefrontal cortex details" }).click();
+    await expect(panel(page).getByRole("heading", { level: 2, name: "Self-control" })).toHaveCount(0);
   });
 
   test("dragging rotates without selecting; a click selects", async ({ page }) => {
@@ -58,19 +58,18 @@ test.describe("desktop", () => {
   test("marker click selects; lesson flow syncs; exit restores", async ({ page }) => {
     await page.goto("/");
     await ready(page);
-    const m = page.locator('.marker[aria-label^="Temporal cortex"]').locator("visible=true").first();
+    const m = page.locator('.marker[aria-label^="Empathy: Temporal cortex"]').locator("visible=true").first();
     await m.click();
-    await expect(panel(page).getByRole("heading", { level: 2, name: "Temporal cortex" })).toBeVisible();
+    await expect(panel(page).getByRole("heading", { level: 2, name: "Empathy" })).toBeVisible();
 
     await page.getByRole("button", { name: /^Guided lessons/ }).click();
     await panel(page).getByRole("button", { name: /Why can.t we pay attention to everything/ }).click();
     await expect(panel(page).getByText("Step 1 of 6")).toBeVisible();
     await panel(page).getByRole("button", { name: /^Next/ }).click();
     await expect(panel(page).getByText("Step 2 of 6")).toBeVisible();
-    // Highlighted regions in the list match the step (prefrontal + parietal).
-    const list = page.getByRole("region", { name: "Brain regions" }).last();
-    await expect(list.getByRole("button", { name: /Prefrontal cortex \(highlighted/ })).toBeVisible();
-    await expect(list.getByRole("button", { name: /Parietal cortex \(highlighted/ })).toBeVisible();
+    // The step lists the brain areas it highlights (prefrontal + parietal).
+    await expect(panel(page).getByRole("button", { name: /^Prefrontal cortex\s*, open details/ })).toBeVisible();
+    await expect(panel(page).getByRole("button", { name: /^Parietal cortex\s*, open details/ })).toBeVisible();
     await panel(page).getByRole("button", { name: /Exit lesson/ }).click();
     await expect(page.getByRole("heading", { level: 1, name: /Explore the mind/ })).toBeVisible();
   });
@@ -81,9 +80,10 @@ test.describe("desktop", () => {
     await page.goto("/");
     const alert = page.getByRole("alert").filter({ hasText: "3D model" });
     await expect(alert).toContainText("couldn't be loaded");
-    // Educational content still works.
-    await page.getByRole("region", { name: "Brain regions" }).last().getByRole("button", { name: /Amygdala/ }).click();
-    await expect(panel(page).getByRole("heading", { level: 2, name: "Amygdala" })).toBeVisible();
+    // The psychology content is still available as readable text.
+    const guide = page.getByRole("region", { name: "Every trait, as readable text" });
+    await guide.locator("summary", { hasText: "Emotional sensitivity" }).click();
+    await expect(guide.getByRole("heading", { level: 3, name: "Emotional sensitivity" })).toBeVisible();
     // Retry succeeds once the network recovers.
     fail = false;
     await alert.getByRole("button", { name: "Try again" }).click();
@@ -98,8 +98,8 @@ test.describe("desktop", () => {
     await page.getByRole("button", { name: "Solid material view" }).click();
     await expect(page.getByRole("button", { name: "Solid material view" })).toHaveAttribute("aria-pressed", "true");
     await page.getByRole("button", { name: "Show labelled 2D view" }).click();
-    await page.getByRole("button", { name: /^Parietal cortex$/ }).click();
-    await expect(panel(page).getByRole("heading", { level: 2, name: "Parietal cortex" })).toBeVisible();
+    await page.getByRole("button", { name: /^Mind-wandering: Parietal cortex$/ }).click();
+    await expect(panel(page).getByRole("heading", { level: 2, name: "Mind-wandering" })).toBeVisible();
   });
 });
 
@@ -111,11 +111,8 @@ test.describe("mobile", () => {
     await ready(page);
     const overflow = await page.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth);
     expect(overflow).toBeLessThanOrEqual(0);
-    const viewer = await page.locator("#viewer").boundingBox();
-    const list = await page.getByRole("region", { name: "Brain regions" }).first().boundingBox();
-    expect(list!.y).toBeGreaterThan(viewer!.y); // list below the viewer
-    await page.getByRole("region", { name: "Brain regions" }).first().getByRole("button", { name: /Hippocampus/ }).tap();
-    await expect(panel(page).getByRole("heading", { level: 2, name: "Hippocampus" })).toBeVisible();
-    await expect(page.getByRole("link", { name: /Read about the hippocampus/ })).toBeVisible();
+    await page.locator('.marker[aria-label^="Nostalgia: Hippocampus"]').locator("visible=true").first().tap();
+    await expect(panel(page).getByRole("heading", { level: 2, name: "Nostalgia" })).toBeVisible();
+    await expect(page.getByRole("link", { name: /Read about nostalgia/ })).toBeVisible();
   });
 });

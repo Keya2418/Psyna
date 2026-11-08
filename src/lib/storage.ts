@@ -16,7 +16,7 @@ export interface PersistedState {
   preferences: Preferences;
 }
 
-export const STORAGE_KEY = "mind-atlas:v1";
+export const STORAGE_KEY = "psyna:v1";
 
 export const DEFAULT_PREFERENCES: Preferences = { material: "glass", motion: "system" };
 

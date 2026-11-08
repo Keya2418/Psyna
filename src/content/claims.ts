@@ -11,12 +11,6 @@ import type { EducationalClaim } from "./types";
 export const claims: EducationalClaim[] = [
   // ───────────────────────── Prefrontal cortex ─────────────────────────
   {
-    id: "pfc-location",
-    text: "The frontal lobes sit directly behind the forehead, with motor areas along their back edge. “Prefrontal” refers to the frontal cortex in front of those motor areas.",
-    evidence: "anatomy",
-    citationIds: ["ninds-brain-basics"],
-  },
-  {
     id: "pfc-cognitive-control",
     text: "An influential theory proposes that prefrontal cortex supports cognitive control: keeping goals and rules active so that they bias processing in other brain areas toward what the current task needs.",
     evidence: "interpretation",
@@ -36,33 +30,8 @@ export const claims: EducationalClaim[] = [
     evidence: "association",
     citationIds: ["corbetta-shulman-2002", "kastner-ungerleider-2000"],
   },
-  {
-    id: "pfc-hippocampus-memory",
-    text: "Prefrontal cortex and the hippocampus play distinct but complementary roles in remembering events, and their interaction appears to help use the current context to retrieve relevant memories.",
-    evidence: "interpretation",
-    citationIds: ["eichenbaum-2017"],
-    caveat: "Much of the detailed mechanism comes from animal research, and the model is still being refined.",
-  },
-  {
-    id: "pfc-networks-not-unit",
-    text: "Lateral frontal cortex does not seem to work as a single unit. Reviews of the evidence describe separate frontal networks that interact to meet different task demands.",
-    evidence: "interpretation",
-    citationIds: ["badre-nee-2018"],
-  },
-  {
-    id: "pfc-multiple-demand",
-    text: "A common pattern of frontal and parietal activity appears across many different demanding tasks, suggesting these areas help organise multi-step mental work.",
-    evidence: "association",
-    citationIds: ["duncan-2010"],
-  },
 
   // ───────────────────────── Parietal cortex ─────────────────────────
-  {
-    id: "parietal-location",
-    text: "The parietal lobes lie behind the frontal lobes, on the upper back part of each hemisphere. Their front strip, just behind the motor areas, is the somatosensory cortex, which receives information about touch, temperature, and body movement.",
-    evidence: "anatomy",
-    citationIds: ["ninds-brain-basics"],
-  },
   {
     id: "parietal-attention-networks",
     text: "Parietal cortex takes part in two partly separate attention networks: one (with intraparietal cortex) linked to goal-directed focus, and another (with temporoparietal cortex, more strongly on the right side) linked to noticing unexpected, important events.",
@@ -70,120 +39,16 @@ export const claims: EducationalClaim[] = [
     citationIds: ["corbetta-shulman-2002"],
     caveat: "The two networks interact constantly; the division is a useful simplification.",
   },
-  {
-    id: "parietal-action",
-    text: "A well-known proposal describes a visual pathway from occipital to posterior parietal cortex that helps guide actions, such as shaping your hand to pick up an object.",
-    evidence: "interpretation",
-    citationIds: ["goodale-milner-1992"],
-    caveat: "Later research has shown the two visual “streams” interact more than the original proposal suggested.",
-  },
-  {
-    id: "parietal-nonspatial",
-    text: "Parietal cortex is not only about space and movement. Lower (inferior) parietal regions are also involved in sustaining attention and detecting important events over time.",
-    evidence: "association",
-    citationIds: ["husain-nachev-2007"],
-  },
-  {
-    id: "parietal-neglect",
-    text: "Damage involving right parietal, temporal, and frontal cortex can cause spatial neglect, where a person tends not to notice things on one side. Researchers argue this reflects disrupted attention networks rather than the loss of one isolated spot.",
-    evidence: "causal",
-    citationIds: ["corbetta-shulman-2011"],
-    caveat: "Brain injuries rarely affect one region cleanly, so lesion evidence must be interpreted carefully.",
-  },
-  {
-    id: "parietal-priority-map",
-    text: "In monkeys, neurons in an area of the intraparietal sulcus behave like a “priority map”, with activity reflecting how important each location currently is for attention and eye movements.",
-    evidence: "association",
-    citationIds: ["bisley-goldberg-2010"],
-    caveat: "This evidence comes from animal research. Human parietal cortex is related but not identical.",
-  },
-  {
-    id: "parietal-semantic",
-    text: "The inferior parietal lobe and much of the temporal lobe sit where several sensory processing streams converge, and are engaged when people use general knowledge about the world.",
-    evidence: "association",
-    citationIds: ["binder-desai-2011"],
-  },
-
-  // ───────────────────────── Temporal cortex ─────────────────────────
-  {
-    id: "temporal-location",
-    text: "The temporal lobes sit low on each side of the brain, in front of the visual areas and beneath the frontal and parietal lobes. An area at the top of each temporal lobe receives information from the ears.",
-    evidence: "anatomy",
-    citationIds: ["ninds-brain-basics"],
-  },
-  {
-    id: "temporal-medial-memory",
-    text: "The inner (medial) part of the temporal lobe contains the hippocampus and neighbouring cortex — entorhinal, perirhinal, and parahippocampal — that together form a system essential for remembering facts and events.",
-    evidence: "causal",
-    citationIds: ["squire-stark-clark-2004", "qbi-lobes"],
-    caveat: "Researchers still debate how the work is divided among these neighbouring structures.",
-  },
-  {
-    id: "temporal-object-stream",
-    text: "A pathway from visual cortex into the lower temporal lobe is proposed to play a major role in recognising and identifying objects.",
-    evidence: "interpretation",
-    citationIds: ["goodale-milner-1992", "grill-spector-malach-2004"],
-  },
-  {
-    id: "temporal-faces",
-    text: "In an influential imaging study, a region of the fusiform gyrus on the underside of the temporal lobe responded more to faces than to other objects in 12 of 15 participants.",
-    evidence: "association",
-    citationIds: ["kanwisher-1997"],
-    caveat: "“Responds more to faces” does not mean the area only handles faces, or that face recognition happens there alone.",
-  },
-  {
-    id: "temporal-speech",
-    text: "A widely used model describes speech comprehension as relying on a pathway through temporal cortex that is largely present on both sides, while mapping sounds to speech movements relies on a pathway that is more strongly left-sided.",
-    evidence: "interpretation",
-    citationIds: ["hickok-poeppel-2007"],
-  },
 
   // ───────────────────────── Occipital cortex ─────────────────────────
-  {
-    id: "occipital-location",
-    text: "The occipital lobes are at the back of the brain. They process visual information from the eyes; the primary visual cortex (V1) is the first cortical area to receive it.",
-    evidence: "anatomy",
-    citationIds: ["ninds-brain-basics", "qbi-lobes"],
-  },
-  {
-    id: "occipital-maps",
-    text: "Much of visual cortex is organised as maps of the visual field: neighbouring neurons respond to neighbouring locations in what you see. Several such maps have been measured in human occipital and parietal cortex.",
-    evidence: "association",
-    citationIds: ["wandell-2007"],
-  },
-  {
-    id: "occipital-damage",
-    text: "Damage to the occipital lobes can cause loss of vision.",
-    evidence: "causal",
-    citationIds: ["ninds-brain-basics"],
-  },
   {
     id: "occipital-attention-modulation",
     text: "Attention changes activity in visual cortex. Many objects compete for limited processing, and signals from a frontal–parietal network help bias that competition toward what is relevant.",
     evidence: "association",
     citationIds: ["kastner-ungerleider-2000"],
   },
-  {
-    id: "occipital-hierarchy",
-    text: "Imaging research describes human visual cortex as many areas with partly specialised roles, organised roughly hierarchically from simpler to more complex visual features.",
-    evidence: "interpretation",
-    citationIds: ["grill-spector-malach-2004"],
-  },
 
   // ───────────────────────── Hippocampus ─────────────────────────
-  {
-    id: "hippo-location",
-    text: "There is one hippocampus in each hemisphere, curled deep inside the inner part of the temporal lobe. Its curved shape gave it a name that refers to the seahorse.",
-    evidence: "anatomy",
-    citationIds: ["qbi-limbic", "qbi-lobes"],
-  },
-  {
-    id: "hippo-hm",
-    text: "Studies of patient H.M., who had tissue removed from the medial temporal lobe on both sides in the 1950s, showed that these structures are important for forming new lasting memories of facts and events.",
-    evidence: "causal",
-    citationIds: ["scoville-milner-1957", "squire-wixted-2011"],
-    caveat: "H.M.'s surgery removed more than the hippocampus, and a single case cannot reveal everything about how memory works.",
-  },
   {
     id: "hippo-binding",
     text: "The hippocampus works with a network of cortical areas and appears to link together the separate elements of an event — what happened, where, and when.",
@@ -198,33 +63,6 @@ export const claims: EducationalClaim[] = [
     caveat: "Researchers still disagree about which memories become independent of the hippocampus, and whether detailed personal memories ever fully do.",
   },
   {
-    id: "hippo-transformation",
-    text: "Another view emphasises that memories transform over time, and that the hippocampus may stay involved in recalling vivid details while gist-like knowledge relies more on neocortex.",
-    evidence: "interpretation",
-    citationIds: ["moscovitch-2016"],
-  },
-  {
-    id: "hippo-spatial",
-    text: "Recordings in animals have found “place cells” in the hippocampus that fire when an animal is in particular locations, and “grid cells” in nearby entorhinal cortex, which together contribute to representing space.",
-    evidence: "association",
-    citationIds: ["moser-2008"],
-    caveat: "This evidence comes mainly from rodents.",
-  },
-  {
-    id: "hippo-taxi",
-    text: "In a structural MRI study, licensed London taxi drivers had larger posterior hippocampi than control participants, and the difference correlated with time spent driving a taxi.",
-    evidence: "association",
-    citationIds: ["maguire-2000"],
-    caveat: "This was a small, cross-sectional comparison. The link with years of driving is suggestive, but on its own the study cannot prove that the job caused the difference.",
-  },
-  {
-    id: "hippo-sleep",
-    text: "Sleep appears to support memory consolidation. During deep (slow-wave) sleep, coordinated brain rhythms are thought to help reactivate hippocampus-dependent memories and redistribute them to neocortex.",
-    evidence: "interpretation",
-    citationIds: ["diekelmann-born-2010"],
-    caveat: "The proposed mechanisms draw on both human and animal studies and remain an active research area.",
-  },
-  {
     id: "memory-distributed",
     text: "Remembering an event draws on a large network of cortical areas that work together with the hippocampus. Each contributes different aspects of the experience — perception, movement, emotion, and thought.",
     evidence: "association",
@@ -236,20 +74,8 @@ export const claims: EducationalClaim[] = [
     evidence: "association",
     citationIds: ["rugg-vilberg-2013"],
   },
-  {
-    id: "memory-skills-elsewhere",
-    text: "Not all memory depends on the hippocampus. Memories for skills and habits rely more on structures such as the basal ganglia and cerebellum.",
-    evidence: "association",
-    citationIds: ["qbi-memory-stored", "brainfacts-memory-facets"],
-  },
 
   // ───────────────────────── Amygdala ─────────────────────────
-  {
-    id: "amyg-location",
-    text: "There is an amygdala in each hemisphere. Each is a small, almond-shaped cluster of nuclei deep in the temporal lobe, right next to the front of the hippocampus.",
-    evidence: "anatomy",
-    citationIds: ["qbi-limbic"],
-  },
   {
     id: "amyg-not-fear-center",
     text: "A large meta-analysis of brain imaging studies found little evidence that individual emotions, such as fear or anger, map consistently and specifically onto single brain regions. Instead, interacting networks were involved across many emotions.",
@@ -264,26 +90,6 @@ export const claims: EducationalClaim[] = [
     citationIds: ["phelps-ledoux-2005"],
   },
   {
-    id: "amyg-fear-learning",
-    text: "Fear-conditioning research, mostly in animals, identified the amygdala as an important part of a system for learning, storing, and expressing learned fear responses.",
-    evidence: "causal",
-    citationIds: ["ledoux-2000"],
-    caveat: "Learned defensive responses in animals are not the same as the human feeling of fear.",
-  },
-  {
-    id: "amyg-reward",
-    text: "The amygdala is involved with rewarding as well as threatening situations. Circuit studies, mainly in rodents, suggest distinct amygdala circuits contribute to these different behaviours.",
-    evidence: "causal",
-    citationIds: ["janak-tye-2015"],
-  },
-  {
-    id: "amyg-sm",
-    text: "A person known as SM, with damage to the amygdala on both sides, showed no overt fear when exposed to snakes, spiders, or a haunted house, yet still showed and felt other emotions.",
-    evidence: "causal",
-    citationIds: ["feinstein-2011"],
-    caveat: "SM is a single person with a rare condition. Her case is informative, but one case cannot show how every brain works.",
-  },
-  {
     id: "amyg-memory-modulation",
     text: "Animal and human studies suggest the amygdala helps emotionally arousing experiences — pleasant or unpleasant — become more strongly consolidated into long-term memory.",
     evidence: "causal",
@@ -291,43 +97,13 @@ export const claims: EducationalClaim[] = [
     caveat: "Most of the causal evidence comes from animal studies; human evidence is mainly correlational.",
   },
   {
-    id: "amyg-mtl-encoding",
-    text: "In an fMRI study, people later remembered emotional pictures better than neutral ones, and activity in the amygdala and medial temporal lobe memory structures during viewing was greater and more closely linked for the emotional pictures.",
-    evidence: "association",
-    citationIds: ["dolcos-2004"],
-  },
-  {
     id: "amyg-attention",
     text: "The amygdala appears to contribute to emotional attention — the way emotionally significant things, especially possible threats, can gain priority in perception.",
     evidence: "interpretation",
     citationIds: ["vuilleumier-2005", "anderson-phelps-2001"],
   },
-  {
-    id: "amyg-lesion-perception",
-    text: "Healthy people are usually better at noticing negative words when attention is stretched thin. A patient with damage to both amygdalae did not show this advantage.",
-    evidence: "causal",
-    citationIds: ["anderson-phelps-2001"],
-  },
-  {
-    id: "amyg-fear-debate",
-    text: "Scientists still disagree about how “fear” should be defined and studied. Rodent studies point to specific circuits, while human imaging often suggests more distributed patterns.",
-    evidence: "interpretation",
-    citationIds: ["adolphs-2013"],
-  },
 
   // ───────────────────────── Emotion, attention, cross-cutting ─────────────────────────
-  {
-    id: "emotion-network",
-    text: "One influential proposal holds that emotion emerges from large-scale interactions among cortical and subcortical systems — including amygdala, hippocampus, thalamus, and brainstem — which is why emotion is intertwined with perception, thought, and action.",
-    evidence: "interpretation",
-    citationIds: ["pessoa-2017"],
-  },
-  {
-    id: "emotion-memory-details",
-    text: "Emotion does not improve memory for everything equally. Emotional arousal tends to sharpen memory for some central details of an event more than others.",
-    evidence: "association",
-    citationIds: ["kensinger-2009"],
-  },
   {
     id: "emotion-reappraisal",
     text: "A meta-analysis of 48 imaging studies found that reappraisal — deliberately reinterpreting a situation — consistently engaged cognitive-control regions and lateral temporal cortex, and changed activity in the amygdala on both sides.",
@@ -335,44 +111,8 @@ export const claims: EducationalClaim[] = [
     citationIds: ["buhle-2014"],
     caveat: "Notably, the same analysis did not find consistent involvement of ventromedial prefrontal cortex, which some models had predicted.",
   },
-  {
-    id: "emotion-regulation-network",
-    text: "Controlling emotions, by redirecting attention or changing how a situation is interpreted, involves interactions between prefrontal and cingulate control systems and the systems that generate emotional responses.",
-    evidence: "association",
-    citationIds: ["ochsner-gross-2005", "etkin-2015"],
-  },
-  {
-    id: "attention-competition",
-    text: "Because the visual system has limited capacity, the many objects in a scene compete for representation. Attention biases this competition.",
-    evidence: "interpretation",
-    citationIds: ["kastner-ungerleider-2000"],
-  },
-  {
-    id: "attention-networks",
-    text: "Attention is not a single process. A long-standing framework describes several interacting brain networks that support it, including orienting and executive control.",
-    evidence: "interpretation",
-    citationIds: ["petersen-posner-2012"],
-  },
-  {
-    id: "attention-salience",
-    text: "Unexpected but important events — such as hearing your name — tend to engage a ventral attention network that can redirect focus, acting like a “circuit breaker” for ongoing goal-directed attention.",
-    evidence: "interpretation",
-    citationIds: ["corbetta-shulman-2002"],
-  },
-  {
-    id: "attention-insula-salience",
-    text: "The anterior insula and anterior cingulate cortex (not separately highlighted in this model) are proposed to form a “salience network” that helps mark important events and switch between other networks.",
-    evidence: "interpretation",
-    citationIds: ["menon-uddin-2010", "seeley-2007"],
-  },
 
   // ───────────────────────── Myths and limits ─────────────────────────
-  {
-    id: "myth-left-right",
-    text: "People are not “left-brained” or “right-brained”. In resting-state scans of over 1,000 people, lateralisation appeared to be a property of particular connections, not an overall trait of a person's whole brain.",
-    evidence: "association",
-    citationIds: ["nielsen-2013", "brainfacts-hemispheres"],
-  },
   {
     id: "myth-reverse-inference",
     text: "Seeing activity in a region does not reliably reveal which mental process is happening, because most regions are involved in many processes. Scientists call this the problem of “reverse inference”.",
@@ -393,7 +133,7 @@ export const claims: EducationalClaim[] = [
   },
   {
     id: "model-source",
-    text: "The 3D model in Mind Atlas is built from an average of many adult MRI scans (the MNI ICBM152 2009c template) and labelled with the CerebrA atlas.",
+    text: "The 3D model in Psyna is built from an average of many adult MRI scans (the MNI ICBM152 2009c template) and labelled with the CerebrA atlas.",
     evidence: "anatomy",
     citationIds: ["manera-2020", "fonov-2011"],
   },
@@ -412,13 +152,6 @@ export const claims: EducationalClaim[] = [
     evidence: "experiment",
     citationIds: ["cowan-2010"],
     caveat: "How much people can repeat back depends on the task. The 3–5 figure describes a more constant underlying limit, counted in meaningful items.",
-  },
-  {
-    id: "psy-episodic",
-    text: "Episodic memory is the ability to remember your own past experiences — re-living what happened, and when. Endel Tulving, who proposed the idea, argued that it is a memory system different from the others.",
-    evidence: "interpretation",
-    citationIds: ["tulving-2002"],
-    caveat: "Tulving's concept changed a great deal over 30 years, and some researchers have criticised it.",
   },
   {
     id: "psy-context-memory",
@@ -572,5 +305,153 @@ export const claims: EducationalClaim[] = [
     evidence: "association",
     citationIds: ["lieberman-2007"],
     caveat: "A brain-imaging study of short laboratory tasks; it shows a link, not a proven mechanism.",
+  },
+
+  // ───────────────────────── Psychological traits (one per selectable area) ─────────────────────────
+  {
+    id: "trait-self-control-gradient",
+    text: "Self-control in childhood predicts adult life. A study that followed 1,000 children from birth to age 32 found that those with more self-control grew up to have better physical health, fewer substance problems, better finances, and less criminal offending, following a gradient of self-control. The link held after accounting for intelligence and social class.",
+    evidence: "association",
+    citationIds: ["moffitt-2011"],
+    caveat: "A long-term observational study: it shows a robust link, not that self-control alone caused these outcomes.",
+  },
+  {
+    id: "trait-self-control-siblings",
+    text: "Even within the same family, it mattered: in a second group of 500 sibling pairs, the sibling with lower self-control tended to have poorer outcomes, despite sharing a family background.",
+    evidence: "association",
+    citationIds: ["moffitt-2011"],
+  },
+  {
+    id: "trait-marshmallow",
+    text: "In the famous “marshmallow test”, preschoolers who waited longer for a bigger treat tended to become more academically and socially competent teenagers.",
+    evidence: "association",
+    citationIds: ["mischel-1989"],
+  },
+  {
+    id: "trait-marshmallow-replication",
+    text: "A larger, more diverse replication found the link was only half as strong as first reported — and shrank by about two-thirds once family background and early ability were taken into account. Most of the difference came from being able to wait at least 20 seconds.",
+    evidence: "association",
+    citationIds: ["watts-2018"],
+    caveat: "A good example of how famous findings get refined: waiting for a treat is a small window onto self-control, not a destiny.",
+  },
+  {
+    id: "trait-personality-power",
+    text: "Personality traits matter as much as money and IQ. A review of long-term studies found that traits predicted how long people lived, whether they divorced, and how far they rose at work about as strongly as socioeconomic status and cognitive ability did.",
+    evidence: "association",
+    citationIds: ["roberts-2007"],
+  },
+  {
+    id: "trait-maturity",
+    text: "Personality keeps changing after childhood. Across 92 long-term samples, people on average became more conscientious and more emotionally stable as they aged, especially between 20 and 40.",
+    evidence: "association",
+    citationIds: ["roberts-2006"],
+    caveat: "These are average trends; individuals change in different ways and at different speeds.",
+  },
+  {
+    id: "trait-brain-structure-caveat",
+    text: "Personality is hard to find in brain anatomy. In the largest such study to date (1,107 students), the Big Five personality traits showed almost no reliable links to the size or shape of brain structures.",
+    evidence: "association",
+    citationIds: ["avinun-2020"],
+    caveat: "So this app links each trait to processes a brain area takes part in — not to the size or “strength” of that area.",
+  },
+  {
+    id: "trait-mind-wandering-balance",
+    text: "Mind-wandering is a trade-off. A major review concludes that drifting off-task is linked to many kinds of errors, but also to creativity and planning for the future — and that how much it helps or hurts depends on what you think about and whether you notice it.",
+    evidence: "interpretation",
+    citationIds: ["smallwood-schooler-2015"],
+  },
+  {
+    id: "trait-incubation",
+    text: "A wandering mind can be creative. People given a break doing an easy, mind-wandering-friendly task came up with more creative uses for everyday objects they had already seen than people who rested, did a demanding task, or had no break.",
+    evidence: "experiment",
+    citationIds: ["baird-2012"],
+  },
+  {
+    id: "trait-mind-wandering-unaware",
+    text: "Brain scans taken while people's minds wandered showed activity in both the brain's “default” network and its executive (task-control) network — strongest when people had not noticed they had drifted off.",
+    evidence: "association",
+    citationIds: ["christoff-2009"],
+  },
+  {
+    id: "trait-false-belief",
+    text: "Reading minds is learned. Across 178 studies and many countries, children went from failing to passing “false-belief” tasks — understanding that someone can believe something untrue — during the preschool years.",
+    evidence: "experiment",
+    citationIds: ["wellman-2001"],
+  },
+  {
+    id: "trait-empathy-components",
+    text: "Empathy is not one thing. A widely used questionnaire measures four parts: empathic concern (feeling for others), perspective taking (seeing their point of view), fantasy (identifying with fictional characters), and personal distress (feeling upset by others' distress).",
+    evidence: "interpretation",
+    citationIds: ["konrath-2011"],
+  },
+  {
+    id: "trait-empathy-decline",
+    text: "Combining 72 samples of American college students from 1979 to 2009, researchers found that empathic concern and perspective taking declined over time, especially after 2000.",
+    evidence: "association",
+    citationIds: ["konrath-2011"],
+    caveat: "Questionnaire scores from one country's students; the study does not identify the cause.",
+  },
+  {
+    id: "trait-tpj",
+    text: "A region at the junction of the temporal and parietal lobes responded more when people read stories about what a character was thinking than stories describing people's physical appearance.",
+    evidence: "association",
+    citationIds: ["saxe-kanwisher-2003"],
+  },
+  {
+    id: "trait-imagery-spectrum",
+    text: "People's mind's eye differs enormously. The vividness of visual imagery ranges from completely absent (“aphantasia”) to photo-like (“hyperphantasia”).",
+    evidence: "interpretation",
+    citationIds: ["pearson-2019"],
+  },
+  {
+    id: "trait-aphantasia",
+    text: "Some people have never been able to picture things in their mind. Researchers named this “aphantasia” in 2015, after people contacted them describing a lifelong absence of visual imagery.",
+    evidence: "association",
+    citationIds: ["zeman-2015", "pearson-2019"],
+    caveat: "Based on people's own descriptions of their inner experience, which are hard to measure directly.",
+  },
+  {
+    id: "trait-imagery-weak-perception",
+    text: "Imagining a scene engages a network running from frontal areas to sensory areas, including the primary visual cortex at the back of the brain. Imagery can work much like a weak version of seeing.",
+    evidence: "interpretation",
+    citationIds: ["pearson-2019"],
+  },
+  {
+    id: "trait-nostalgia-content",
+    text: "Nostalgic memories usually star you with people you're close to, or at big life events, and contain more positive than negative feeling — often a hard moment that turned out well.",
+    evidence: "experiment",
+    citationIds: ["wildschut-2006"],
+  },
+  {
+    id: "trait-nostalgia-function",
+    text: "Nostalgia is a mood-repair tool. It tends to be triggered by low mood and loneliness, and in experiments it strengthened feelings of social connection, raised self-regard, and boosted positive mood.",
+    evidence: "experiment",
+    citationIds: ["wildschut-2006"],
+  },
+  {
+    id: "trait-constructive-memory",
+    text: "Memory is built, not replayed. One influential view holds that memory is constructive and prone to errors — and that this flexibility is what lets us imagine the future, by recombining pieces of past experience.",
+    evidence: "interpretation",
+    citationIds: ["schacter-addis-2007"],
+  },
+  {
+    id: "trait-hippocampus-imagination",
+    text: "People with damage to the hippocampus on both sides were markedly impaired at imagining new everyday scenes: their imagined experiences were fragmented and lacked a coherent sense of space.",
+    evidence: "causal",
+    citationIds: ["hassabis-2007"],
+    caveat: "A small group of patients; the hippocampus works with many other areas in remembering and imagining.",
+  },
+  {
+    id: "trait-neuroticism-definition",
+    text: "Neuroticism is the personality trait describing how readily someone reacts with negative emotions to threat, frustration, or loss. People range from intense reactions to minor setbacks to little reaction even under real difficulty.",
+    evidence: "interpretation",
+    citationIds: ["lahey-2009"],
+  },
+  {
+    id: "trait-neuroticism-health",
+    text: "Neuroticism matters for health. It is a robust predictor of many mental and physical disorders and of how often people use health services.",
+    evidence: "association",
+    citationIds: ["lahey-2009"],
+    caveat: "Links across large groups; a trait score does not predict what will happen to any one person.",
   },
 ];

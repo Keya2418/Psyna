@@ -69,20 +69,16 @@ export function validateContent(content: ContentBundle, availableMeshNames?: Ite
     const owner = `Region "${r.id}"`;
     if (!r.intro.trim()) errors.push(`${owner} has no introduction`);
     if (r.intro.split(/\s+/).length > 90) errors.push(`${owner} introduction is too long for a ~30 second read`);
-    if (r.location.claimIds.length === 0) errors.push(`${owner} location needs a supporting claim`);
-    if (r.functionClaimIds.length === 0) errors.push(`${owner} needs at least one function claim`);
-    if (r.psychology.length === 0) errors.push(`${owner} needs at least one psychology concept`);
-    for (const p of r.psychology) {
-      if (!p.concept.trim()) errors.push(`${owner} has a psychology item without a concept name`);
-      if (p.claimIds.length === 0) errors.push(`${owner} psychology "${p.concept}" needs a supporting claim`);
-      checkClaims(`${owner} psychology "${p.concept}"`, p.claimIds);
+    if (!r.trait.trim()) errors.push(`${owner} needs a psychological trait`);
+    if (r.facts.length === 0) errors.push(`${owner} needs at least one research fact`);
+    for (const f of r.facts) {
+      if (!f.heading.trim()) errors.push(`${owner} has a fact without a heading`);
+      if (f.claimIds.length === 0) errors.push(`${owner} fact "${f.heading}" needs a supporting claim`);
+      checkClaims(`${owner} fact "${f.heading}"`, f.claimIds);
     }
-    if (r.simplifies.length === 0) errors.push(`${owner} needs a "what this simplifies" list`);
-    checkClaims(owner, [...r.location.claimIds, ...r.functionClaimIds, ...r.deeperClaimIds]);
-    for (const w of r.worksWith) {
-      if (w.regionId && !regionIds.has(w.regionId)) errors.push(`${owner} works-with references missing region "${w.regionId}"`);
-      checkClaims(`${owner} works-with "${w.label}"`, w.claimIds ?? []);
-    }
+    if (r.brainLink.claimIds.length === 0) errors.push(`${owner} brain link needs a supporting claim`);
+    checkClaims(`${owner} brain link`, r.brainLink.claimIds);
+    if (r.keepInMind.length === 0) errors.push(`${owner} needs a "keep in mind" list`);
     for (const l of r.relatedLessonIds)
       if (!lessonIds.has(l)) errors.push(`${owner} references missing lesson "${l}"`);
   }

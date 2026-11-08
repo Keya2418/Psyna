@@ -69,11 +69,16 @@ describe("content validation", () => {
   });
 });
 
+const factIds = (r: (typeof regions)[number]) => r.facts.flatMap((f) => f.claimIds);
+
 describe("psychology framing", () => {
-  it("every region leads with psychology concepts backed by cited claims", () => {
+  it("every brain area explains a distinct psychological trait backed by cited research", () => {
+    expect(new Set(regions.map((r) => r.trait)).size).toBe(regions.length);
     for (const r of regions) {
-      expect(r.psychology.length, r.id).toBeGreaterThan(0);
-      for (const p of r.psychology) expect(citationsForClaims(p.claimIds).length, `${r.id}: ${p.concept}`).toBeGreaterThan(0);
+      expect(r.facts.length, r.id).toBeGreaterThan(0);
+      for (const f of r.facts) expect(citationsForClaims(f.claimIds).length, `${r.id}: ${f.heading}`).toBeGreaterThan(0);
+      // Facts are psychology findings, not neuroscience.
+      for (const id of factIds(r)) expect(id, `${r.id}: ${id}`).toMatch(/^(psy|trait)-/);
     }
   });
 
@@ -111,7 +116,7 @@ describe("citations", () => {
 
 describe("editorial guardrails", () => {
   const allText = [
-    ...regions.flatMap((r) => [r.intro, r.example, r.location.text, ...r.psychology.map((p) => p.concept), ...r.simplifies, ...r.worksWith.map((w) => w.text)]),
+    ...regions.flatMap((r) => [r.trait, r.tagline, r.intro, r.example, r.brainLink.text, ...r.facts.map((f) => f.heading), ...r.keepInMind]),
     ...claims.map((c) => c.text),
     ...lessons.flatMap((l) => l.steps.flatMap((s) => [s.heading, s.body, s.example ?? "", s.brainLink ?? ""])),
   ].join("\n");

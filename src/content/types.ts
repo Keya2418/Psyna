@@ -1,5 +1,5 @@
 /**
- * Content model for Mind Atlas.
+ * Content model for Psyna.
  *
  * Educational content (regions, claims, lessons, citations) is plain typed data,
  * kept separate from presentation components. Validation lives in ./validate.ts.
@@ -80,27 +80,21 @@ export interface BrainRegion {
   name: string;
   /** Short label for markers and chips. */
   shortName: string;
-  /** One-word psychology tag shown on list cards and panels, e.g. "Memory". */
-  mindTag: string;
-  /** Explains that this is a broad educational grouping. */
-  groupingNote: string;
-  /** ~30-second plain-language introduction, framed around psychology (mind and behaviour). */
+  /** The psychological trait explained when this area is selected, e.g. "Self-control". */
+  trait: string;
+  /** One-line hook shown under the trait name. */
+  tagline: string;
+  /** ~30-second plain-language introduction to the trait (psychology, not neuroscience). */
   intro: string;
-  /**
-   * The psychology this area helps support: named concepts, each backed by claims.
-   * Shown first on the panel; the neuroscience (function + deeper claims) sits behind an expander.
-   */
-  psychology: { concept: string; claimIds: string[] }[];
+  /** Research findings about the trait, each backed by cited claims. */
+  facts: { heading: string; claimIds: string[] }[];
+  example: string;
+  /** A short, cautious note on how the trait relates to this brain area. */
+  brainLink: { text: string; claimIds: string[] };
+  /** Limits and caveats readers should keep in mind. */
+  keepInMind: string[];
   /** "Surface" or "Deep" — governs how the viewer reveals it. */
   depth: "surface" | "deep";
-  location: { text: string; claimIds: string[] };
-  /** Neuroscience claims about functions this region contributes to (shown under "The brain side"). */
-  functionClaimIds: string[];
-  example: string;
-  worksWith: { label: string; text: string; regionId?: RegionId; claimIds?: string[] }[];
-  simplifies: string[];
-  /** Deeper-detail claims, shown behind an explicit expansion control. */
-  deeperClaimIds: string[];
   relatedLessonIds: LessonId[];
   /** Search keywords (synonyms, sub-areas). */
   keywords: string[];

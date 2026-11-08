@@ -105,12 +105,17 @@ body {
   letter-spacing: -0.035em;
   line-height: 1.02;
 }
+/* Eyebrows: small caps with only the first letter as a full capital. */
 .eyebrow {
-  font-size: 0.75rem;
+  font-size: 0.875rem;
   font-weight: 600;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  text-transform: lowercase;
+  font-variant-caps: small-caps;
   color: var(--color-muted);
+}
+.eyebrow::first-letter {
+  text-transform: uppercase;
 }
 
 /* ── Focus ── */

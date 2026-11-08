@@ -85,7 +85,7 @@ export function AnatomyMap2D({
               key={r.group}
               role="button"
               tabIndex={0}
-              aria-label={`${region.name}${highlighted ? " (highlighted)" : ""}`}
+              aria-label={`${region.trait}: ${region.name}${highlighted ? " (highlighted)" : ""}`}
               aria-pressed={selectedId === region.id}
               className="cursor-pointer focus-ring-inset outline-none [&:focus-visible>path]:stroke-[#0b6d70] [&:focus-visible>path]:[stroke-width:3]"
               onClick={() => onSelect(region.id)}
@@ -112,7 +112,7 @@ export function AnatomyMap2D({
               key={d.regionId}
               role="button"
               tabIndex={0}
-              aria-label={`${region.name} (deep structure, shown as an outline projected through the surface)`}
+              aria-label={`${region.trait}: ${region.name} (deep structure, shown as an outline projected through the surface)`}
               aria-pressed={selectedId === region.id}
               className="cursor-pointer outline-none [&:focus-visible>path]:[stroke-width:3.5]"
               onClick={() => onSelect(region.id)}

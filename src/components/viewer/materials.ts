@@ -73,7 +73,7 @@ function glass(name: string, o: GlassOptions): THREE.MeshPhysicalMaterial {
         ].join("\n"),
       );
   };
-  m.customProgramCacheKey = () => "mind-atlas-glass-v2";
+  m.customProgramCacheKey = () => "psyna-glass-v2";
   return m;
 }
 

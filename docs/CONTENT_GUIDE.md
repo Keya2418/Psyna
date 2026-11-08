@@ -2,14 +2,14 @@
 
 All educational content is typed data in `src/content/`. Components only render it, so most content changes need no component edits.
 
-**Framing:** Mind Atlas is psychology-first. Region panels and lesson steps lead with what people experience and do, as shown by behavioural research, and then link that to brain areas. Keep neuroscience detail in `functionClaimIds` / `deeperClaimIds` (shown behind the “deeper detail” expander) and in a lesson step's `brainLink`.
+**Framing:** Psyna is psychology-first. Selecting a brain area opens a psychological trait: its `facts` (claim ids starting with `trait-` or `psy-`), an everyday `example`, and `keepInMind` caveats. Neuroscience is limited to the region's short `brainLink` (shown under “The brain connection”, always alongside the general `trait-brain-structure-caveat` claim) and a lesson step's `brainLink`. The readable “Psychology facts” section omits the brain link entirely.
 
 ```
 src/content/
   types.ts          BrainRegion, EducationalClaim, Citation, GuidedLesson, LessonStep, BrainAssetMapping
   citations.ts      every source (with verification record)
   claims.ts         short factual statements, each citing sources
-  regions.ts        the six region panels (reference claims by id)
+  regions.ts        the six brain areas and their traits (reference claims by id)
   lessons.ts        the three guided lessons (reference regions + claims by id)
   assetMapping.ts   region ↔ mesh names, marker anchors, camera presets
   validate.ts       cross-reference checks (run by `npm test`)
@@ -26,7 +26,7 @@ src/content/
    - `causal`: from lesions, stimulation, or manipulation. Add a `caveat` if it comes from one case or from animals.
    - `experiment`: a behavioural (psychology) experiment comparing conditions, or a meta-analysis of such experiments.
    - `interpretation`: a model or theory. Say so in the text ("one influential proposal…").
-4. **Use contribution language:** "contributes to", "is involved in", "works with". Never assign a trait, emotion, or condition to a single region. `npm test` blocks a few known overclaims ("is the fear center", "controls your personality", "you are left-brained").
+4. **Use contribution language:** "contributes to", "is involved in", "works with". Each area is *paired* with a trait for teaching, but never say the area contains, controls, or determines it; the brain link must describe a process the area takes part in. `npm test` blocks a few known overclaims ("is the fear center", "controls your personality", "you are left-brained").
 5. **Flag animal research** with `animalResearch: "primarily" | "partly"` on the citation, and say so in the claim or caveat.
 6. **No diagnosis, scoring, treatment advice, or claims about the reader's own brain.**
 7. **Never invent** papers, authors, DOIs, quotations, or reviewer credentials. Never state that content was professionally reviewed unless that review actually happened, and record who did it and when.
@@ -70,10 +70,10 @@ Lessons must have 4–6 steps. Describe overlapping contributions; don't invent 
 ## Adding a region
 
 1. Add the id to the `RegionId` union in `types.ts`.
-2. Add claims, then a `BrainRegion` entry in `regions.ts` with a one-word `mindTag` and a `psychology` list (`{ concept, claimIds }`) that leads the panel. Only list a concept under a region if a claim on the same panel links that area to it, or add a note under `simplifies`.
+2. Add claims, then a `BrainRegion` entry in `regions.ts` with a `trait`, `tagline`, `intro`, `facts` (`{ heading, claimIds }`, psychology claims only), `example`, `keepInMind`, and a short `brainLink` (`{ text, claimIds }`) supported by its claims.
 3. Add a `BrainAssetMapping` in `assetMapping.ts`:
    - If the model has meshes for it, list `meshNames`, `markers` (position + outward normal, model frame), and a `camera` preset.
-   - If it **can't be isolated** visually, use `isolation: "not-isolated"`, `meshNames: []`, and an `isolationNote` explaining why. The text panel, list, and lessons still work, and the note appears under "What this explanation simplifies".
+   - If it **can't be isolated** visually, use `isolation: "not-isolated"`, `meshNames: []`, and an `isolationNote` explaining why. The trait panel, 2D map, and lessons still work.
 4. Run `npm test`. Validation fails on missing regions, claims, citations, or mesh names, and checks mappings against the real GLB.
 
 ## Checks

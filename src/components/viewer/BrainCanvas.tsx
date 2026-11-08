@@ -110,7 +110,7 @@ function BrainModel({
   useEffect(() => {
     const expected = [...assetMappings.flatMap((m) => m.meshNames), ...contextMeshes.map((c) => c.meshName)];
     const missing = expected.filter((n) => !(nodes[n] as THREE.Mesh | undefined)?.isMesh);
-    if (missing.length && process.env.NODE_ENV !== "production") console.warn("[Mind Atlas] meshes missing from model:", missing);
+    if (missing.length && process.env.NODE_ENV !== "production") console.warn("[Psyna] meshes missing from model:", missing);
     onReady();
     invalidate();
     // eslint-disable-next-line react-hooks/exhaustive-deps -- run once when the model is available
@@ -467,12 +467,12 @@ export default function BrainCanvas(props: BrainCanvasProps) {
               data-selected={selected}
               data-dim={dim}
               aria-pressed={selected}
-              aria-label={`${region.name}, ${sideLabel} hemisphere${m.deep ? ", deep structure" : ""}`}
+              aria-label={`${region.trait}: ${region.name}, ${sideLabel} hemisphere${m.deep ? ", deep structure" : ""}`}
               onClick={() => onSelectRegion(m.regionId)}
             >
               <span className="marker-dot" aria-hidden="true" />
               <span className="marker-label glass-pill" aria-hidden="true">
-                {region.shortName}
+                {region.trait}
                 {m.deep && <span className="font-normal text-muted"> · deep</span>}
               </span>
             </button>

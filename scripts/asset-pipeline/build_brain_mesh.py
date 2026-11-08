@@ -1,5 +1,5 @@
 """
-Build the Mind Atlas brain model from open neuroimaging data.
+Build the Psyna brain model from open neuroimaging data.
 
 Inputs (download separately, see ASSET_CREDITS.md):
   - MNI ICBM 2009c Nonlinear Symmetric template (GM/WM probability maps)

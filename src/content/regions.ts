@@ -1,233 +1,180 @@
 import type { BrainRegion } from "./types";
 
-const GROUPING =
-  "A broad educational grouping. Real boundaries vary between people and are not sharp lines.";
-
+/**
+ * Each selectable brain area opens one psychological trait. The psychology comes first;
+ * the brain link is deliberately brief and cautious, because traits are not located in single areas.
+ */
 export const regions: BrainRegion[] = [
   {
     id: "prefrontal-cortex",
     name: "Prefrontal cortex",
     shortName: "Prefrontal",
-    mindTag: "Focus",
-    groupingNote: `${GROUPING} Our highlight combines several atlas labels of the front of the frontal lobe.`,
+    trait: "Self-control",
+    tagline: "Choosing what you want most over what you want now.",
     intro:
-      "Planning ahead, resisting an impulse, keeping a goal in mind, switching between tasks: psychologists call these skills executive functions. The prefrontal cortex, behind the forehead, is one of the brain areas most closely linked to them — always working together with other areas, not on its own.",
-    psychology: [
-      { concept: "Executive functions", claimIds: ["psy-executive-functions"] },
-      { concept: "Working memory: a small mental workspace", claimIds: ["psy-working-memory-limit"] },
-      { concept: "Self-control of attention: the Stroop effect", claimIds: ["psy-stroop"] },
-      { concept: "Switching between tasks has a cost", claimIds: ["psy-switch-cost"] },
+      "Self-control is the ability to override an impulse for the sake of a longer-term goal: waiting, resisting a distraction, sticking with a plan. Psychologists treat it as a trait, because people differ in it in fairly stable ways, and it overlaps with the personality trait called conscientiousness. It is not fixed, though: it develops through childhood and keeps changing in adulthood.",
+    facts: [
+      { heading: "Childhood self-control predicts adult life", claimIds: ["trait-self-control-gradient", "trait-self-control-siblings"] },
+      { heading: "The marshmallow test, revisited", claimIds: ["trait-marshmallow", "trait-marshmallow-replication"] },
+      { heading: "Personality matters as much as money and IQ", claimIds: ["trait-personality-power"] },
+      { heading: "It tends to grow with age", claimIds: ["trait-maturity"] },
+      { heading: "It depends on how you are doing", claimIds: ["psy-ef-wellbeing"] },
+    ],
+    example:
+      "Leaving your phone in another room while you study, so you are not tempted to check it, is an everyday act of self-control: choosing a longer-term goal over a short-term pull.",
+    brainLink: {
+      text: "Self-control draws on executive functions, such as holding a goal in mind and holding back an impulse. The prefrontal cortex supports these together with other brain areas.",
+      claimIds: ["psy-executive-functions", "pfc-cognitive-control"],
+    },
+    keepInMind: [
+      "Self-control is not a fixed amount of willpower. Stress, poor sleep, and loneliness can all make it harder.",
+      "Trait findings describe averages across many people. They cannot predict what any one person will do.",
+      "Waiting for a treat in a lab is only a small window onto self-control.",
     ],
     depth: "surface",
-    location: {
-      text: "Front of each frontal lobe, ahead of the motor areas. Present on both sides.",
-      claimIds: ["pfc-location"],
-    },
-    functionClaimIds: ["pfc-cognitive-control", "pfc-working-memory", "pfc-attention-network"],
-    example:
-      "Remembering to pick up bread on the way home — while chatting with a friend — means holding a goal in mind, ignoring distractions, and acting at the right moment: a small everyday workout for executive functions.",
-    worksWith: [
-      { label: "Parietal cortex", regionId: "parietal-cortex", text: "Frontal–parietal networks for directing attention.", claimIds: ["pfc-attention-network"] },
-      { label: "Hippocampus", regionId: "hippocampus", text: "Complementary roles in remembering events.", claimIds: ["pfc-hippocampus-memory"] },
-      { label: "Amygdala", regionId: "amygdala", text: "Interactions when emotional responses are regulated.", claimIds: ["emotion-regulation-network"] },
-      { label: "Basal ganglia and thalamus", text: "Deep structures (not shown separately) that form loops with frontal cortex." },
-    ],
-    simplifies: [
-      "Psychology tasks like the Stroop task measure behaviour. A score reflects many mental processes and many brain areas, not the prefrontal cortex alone.",
-      "There is no sharp anatomical line marking “prefrontal”. Our highlight follows atlas labels and includes some premotor territory near its back edge.",
-      "Prefrontal cortex contains many subregions — lateral, medial, and orbital — with different connections and contributions.",
-      "It does not “control your personality” or house a single trait such as willpower.",
-    ],
-    deeperClaimIds: ["pfc-hippocampus-memory", "pfc-networks-not-unit", "pfc-multiple-demand", "emotion-reappraisal", "attention-insula-salience"],
     relatedLessonIds: ["attention", "memory", "emotion"],
-    keywords: ["frontal", "PFC", "dorsolateral", "orbitofrontal", "executive", "planning", "working memory", "executive function", "task switching", "self-control", "willpower", "focus", "multitasking", "Stroop"],
+    keywords: ["self-control", "willpower", "conscientiousness", "impulse", "delay of gratification", "marshmallow", "discipline", "executive function", "planning", "frontal", "PFC"],
   },
   {
     id: "parietal-cortex",
     name: "Parietal cortex",
     shortName: "Parietal",
-    mindTag: "Attention",
-    groupingNote: `${GROUPING} Our highlight includes the somatosensory strip, superior and inferior parietal lobules, and precuneus.`,
+    trait: "Mind-wandering",
+    tagline: "Where your attention goes when you are not steering it.",
     intro:
-      "Shifting your attention to something without moving your eyes, or knowing where things are around you, are everyday feats of spatial attention. The parietal cortex, toward the top and back of the brain, works with frontal areas to help steer this attention and guide your movements.",
-    psychology: [
-      { concept: "Attention can move without the eyes", claimIds: ["psy-covert-orienting"] },
-      { concept: "Goal-directed vs. attention-grabbing", claimIds: ["psy-two-routes"] },
-      { concept: "Vision for action: reaching and grasping", claimIds: ["parietal-action"] },
+      "Your attention drifts away from the task at hand surprisingly often, to plans, memories, and daydreams. Psychologists call this mind-wandering. People differ in how much their minds wander and in whether they notice when it happens. It is not simply a failure of focus: it has real costs, but also real benefits.",
+    facts: [
+      { heading: "Minds wander a lot", claimIds: ["psy-mind-wandering"] },
+      { heading: "A trade-off, not just a flaw", claimIds: ["trait-mind-wandering-balance"] },
+      { heading: "Daydreaming can spark creativity", claimIds: ["trait-incubation"] },
+      { heading: "We often don't notice we've drifted", claimIds: ["trait-mind-wandering-unaware"] },
+    ],
+    example:
+      "Reaching the bottom of a page and realising you have no idea what you just read is mind-wandering caught in the act.",
+    brainLink: {
+      text: "Keeping your focus on purpose relies on attention networks that include the parietal cortex, working together with frontal areas.",
+      claimIds: ["parietal-attention-networks"],
+    },
+    keepInMind: [
+      "Mind-wandering is usually measured by asking people what they were just thinking about, so it relies on self-report.",
+      "Whether mind-wandering helps or hurts depends on the task and on what you are thinking about.",
+      "The brain networks involved span many areas; the parietal cortex is only one part.",
     ],
     depth: "surface",
-    location: {
-      text: "Behind the frontal lobes and above the temporal lobes, on both sides.",
-      claimIds: ["parietal-location"],
-    },
-    functionClaimIds: ["parietal-attention-networks", "parietal-action", "parietal-nonspatial"],
-    example:
-      "Noticing a friend wave at the edge of your vision while you read, then reaching for your coffee without looking up, combines spatial attention, vision, touch, and a sense of where your hand is.",
-    worksWith: [
-      { label: "Prefrontal cortex", regionId: "prefrontal-cortex", text: "Frontal–parietal attention networks.", claimIds: ["pfc-attention-network"] },
-      { label: "Occipital cortex", regionId: "occipital-cortex", text: "Visual information that helps guide action.", claimIds: ["parietal-action"] },
-      { label: "Temporal cortex", regionId: "temporal-cortex", text: "Converging streams that support general knowledge.", claimIds: ["parietal-semantic"] },
-    ],
-    simplifies: [
-      "Spatial attention is measured in behaviour. Imaging links it to frontal and parietal networks, which also take part in many other tasks.",
-      "Parietal cortex combines quite different areas — from primary touch processing to association areas used in reading and arithmetic.",
-      "Attention “networks” are a simplification; regions take part in several networks at once.",
-      "Lesion effects depend on the exact location and extent of damage, which varies between people.",
-    ],
-    deeperClaimIds: ["parietal-neglect", "parietal-priority-map", "parietal-semantic", "attention-networks", "attention-salience"],
     relatedLessonIds: ["attention", "memory"],
-    keywords: ["somatosensory", "touch", "space", "intraparietal", "precuneus", "spatial", "neglect", "attention", "spatial attention", "orienting", "spotlight", "distraction", "reaching"],
+    keywords: ["mind-wandering", "daydreaming", "focus", "attention", "distraction", "creativity", "incubation", "zoning out", "concentration", "parietal"],
   },
   {
     id: "temporal-cortex",
     name: "Temporal cortex",
     shortName: "Temporal",
-    mindTag: "Knowing",
-    groupingNote: `${GROUPING} Our highlight includes the lateral temporal gyri and medial cortex (fusiform, parahippocampal, entorhinal). The hippocampus and amygdala are shown separately.`,
+    trait: "Empathy",
+    tagline: "Understanding what others think and feel.",
     intro:
-      "Recognising a face, understanding a sentence, and knowing what a word means are things psychologists study as perception, language, and semantic memory (general knowledge). The temporal cortex, low on each side of the brain near your temples, contributes to all of them — together with other areas.",
-    psychology: [
-      { concept: "Recognising objects and faces", claimIds: ["temporal-object-stream", "temporal-faces"] },
-      { concept: "Understanding speech", claimIds: ["temporal-speech"] },
-      { concept: "Knowing facts and meanings (semantic memory)", claimIds: ["parietal-semantic"] },
+      "Empathy covers both feeling for other people and understanding their point of view. Psychologists measure it as a trait, since some people do it more readily than others. They also study how children develop the basic insight underneath it: that other people have minds of their own, with beliefs that can differ from reality.",
+    facts: [
+      { heading: "Empathy has several parts", claimIds: ["trait-empathy-components"] },
+      { heading: "Understanding other minds develops in childhood", claimIds: ["trait-false-belief"] },
+      { heading: "Empathy scores can shift over time", claimIds: ["trait-empathy-decline"] },
+    ],
+    example:
+      "Realising that a friend who hasn't replied isn't ignoring you (they just haven't seen your message yet) is perspective taking: picturing what is going on in someone else's mind.",
+    brainLink: {
+      text: "Thinking about what someone else is thinking engages an area where the temporal and parietal lobes meet, known as the temporo-parietal junction.",
+      claimIds: ["trait-tpj"],
+    },
+    keepInMind: [
+      "Empathy questionnaires measure how people describe themselves, which is not always how they act.",
+      "Understanding others relies on a wide network spanning the temporal, parietal, and frontal lobes.",
+      "Trends in average scores say nothing about any one person's capacity for empathy.",
     ],
     depth: "surface",
-    location: {
-      text: "Low on each side, beneath the frontal and parietal lobes. Its inner (medial) surface borders the hippocampus.",
-      claimIds: ["temporal-location", "temporal-medial-memory"],
-    },
-    functionClaimIds: ["temporal-object-stream", "temporal-speech", "temporal-medial-memory"],
-    example:
-      "Recognising a friend's face in a crowd, then hearing them call your name and understanding what they say, draws on temporal cortex — working with visual areas, memory systems, and attention networks.",
-    worksWith: [
-      { label: "Occipital cortex", regionId: "occipital-cortex", text: "A visual pathway into the temporal lobe for recognising objects.", claimIds: ["temporal-object-stream"] },
-      { label: "Hippocampus", regionId: "hippocampus", text: "A medial temporal memory system.", claimIds: ["temporal-medial-memory"] },
-      { label: "Parietal cortex", regionId: "parietal-cortex", text: "Convergence zones for general knowledge.", claimIds: ["parietal-semantic"] },
-      { label: "Frontal cortex", regionId: "prefrontal-cortex", text: "Speech pathways linking sound and articulation.", claimIds: ["temporal-speech"] },
-    ],
-    simplifies: [
-      "Language involves frontal, temporal, and parietal areas; it is not located in one lobe.",
-      "How strongly language relies on the left or right side varies between individuals.",
-      "Areas that respond more to faces or words also take part in other tasks.",
-    ],
-    deeperClaimIds: ["temporal-faces", "parietal-semantic", "temporal-medial-memory"],
     relatedLessonIds: ["memory", "attention"],
-    keywords: ["auditory", "hearing", "speech", "language", "faces", "fusiform", "entorhinal", "parahippocampal", "semantic", "recognition", "knowledge", "meaning", "understanding", "words", "listening"],
+    keywords: ["empathy", "theory of mind", "perspective taking", "compassion", "social", "understanding others", "false belief", "kindness", "temporal"],
   },
   {
     id: "occipital-cortex",
     name: "Occipital cortex",
     shortName: "Occipital",
-    mindTag: "Seeing",
-    groupingNote: `${GROUPING} Our highlight includes lateral occipital cortex, cuneus, lingual gyrus, and the cortex around the calcarine sulcus (where V1 lies).`,
+    trait: "Mental imagery",
+    tagline: "How vividly you see with your mind's eye.",
     intro:
-      "Seeing feels effortless and complete, but psychology experiments show we notice far less than we think: unattended events and even large changes can go unseen. The occipital cortex, at the back of the brain, is where visual information first reaches the cortex — and what we end up perceiving depends on attention too.",
-    psychology: [
-      { concept: "We miss what we don't attend to", claimIds: ["psy-inattentional-blindness"] },
-      { concept: "Change blindness", claimIds: ["psy-change-blindness"] },
-      { concept: "Attention shapes what we see", claimIds: ["occipital-attention-modulation"] },
+      "Close your eyes and picture a friend's face. For some people it appears almost like a photograph; for others there is nothing to see at all. Visual imagery, the mind's eye, is one of the most striking ways people differ, and it is easy to assume that everyone's inner experience is just like your own.",
+    facts: [
+      { heading: "A spectrum, from none to photo-like", claimIds: ["trait-imagery-spectrum"] },
+      { heading: "Aphantasia: no mind's eye", claimIds: ["trait-aphantasia"] },
+    ],
+    example:
+      "Ask a few friends to imagine an apple and rate how clear it is, from “no image at all” to “as vivid as really seeing it”. You will probably get very different answers.",
+    brainLink: {
+      text: "Imagining a scene engages visual areas at the back of the brain, including the primary visual cortex, as part of a wider network.",
+      claimIds: ["trait-imagery-weak-perception"],
+    },
+    keepInMind: [
+      "Imagery can only be described by the person experiencing it, which makes it hard to measure objectively.",
+      "Having vivid or faint imagery is a difference in experience, not a measure of intelligence or creativity.",
+      "Imagery involves a network from frontal to sensory areas, not the occipital cortex alone.",
     ],
     depth: "surface",
-    location: {
-      text: "Back of the brain, on both sides, above the cerebellum.",
-      claimIds: ["occipital-location"],
-    },
-    functionClaimIds: ["occipital-maps", "occipital-hierarchy", "occipital-attention-modulation"],
-    example:
-      "Reading these words begins with patterns of light on your retina. Occipital cortex is an early stage in turning them into edges and shapes; whether you notice the word you skimmed past depends on attention.",
-    worksWith: [
-      { label: "Temporal cortex", regionId: "temporal-cortex", text: "Recognising what objects are.", claimIds: ["temporal-object-stream"] },
-      { label: "Parietal cortex", regionId: "parietal-cortex", text: "Using vision to guide action.", claimIds: ["parietal-action"] },
-      { label: "Frontal–parietal attention networks", regionId: "prefrontal-cortex", text: "Biasing which visual information is prioritised.", claimIds: ["occipital-attention-modulation"] },
-    ],
-    simplifies: [
-      "Inattentional and change blindness are about attention and awareness, which involve many brain areas beyond the visual cortex.",
-      "Vision is not a camera: many areas, including some outside the occipital lobe, build what we perceive.",
-      "The “two visual streams” idea is a helpful model, but the pathways interact.",
-      "Visual maps differ in size and position from person to person.",
-    ],
-    deeperClaimIds: ["occipital-damage", "occipital-attention-modulation", "temporal-object-stream", "attention-competition"],
     relatedLessonIds: ["attention", "memory"],
-    keywords: ["visual", "vision", "V1", "calcarine", "cuneus", "lingual", "sight", "perception", "seeing", "noticing", "inattentional blindness", "change blindness", "gorilla"],
+    keywords: ["imagery", "imagination", "mind's eye", "visualise", "visualize", "aphantasia", "hyperphantasia", "picture", "vision", "occipital"],
   },
   {
     id: "hippocampus",
     name: "Hippocampus",
     shortName: "Hippocampus",
-    mindTag: "Memory",
-    groupingNote:
-      "A deep structure, one in each hemisphere. Shown inside the model through a faded outer surface — it is not visible on the brain's exterior.",
+    trait: "Nostalgia",
+    tagline: "Why we revisit the past, and how memory rebuilds it.",
     intro:
-      "Remembering where you parked, what happened at a party, or what you studied last week is episodic memory — and psychology shows it fades, depends on context, and can be strengthened by how you learn. The hippocampus, deep in each temporal lobe, plays a key part in forming these memories, together with the surrounding cortex.",
-    psychology: [
-      { concept: "Episodic memory", claimIds: ["psy-episodic"] },
-      { concept: "The forgetting curve", claimIds: ["psy-forgetting-curve"] },
-      { concept: "Testing yourself beats re-reading", claimIds: ["psy-testing-effect"] },
-      { concept: "Spacing out study", claimIds: ["psy-spacing"] },
-      { concept: "Context helps recall", claimIds: ["psy-context-memory"] },
+      "Nostalgia is a sentimental longing for the past. Psychology research treats it as a common and mostly positive experience that people tend to turn to when they feel low or lonely. It also reveals something about memory itself: remembering is an act of reconstruction, not a replay.",
+    facts: [
+      { heading: "What nostalgic memories are about", claimIds: ["trait-nostalgia-content"] },
+      { heading: "What nostalgia does for us", claimIds: ["trait-nostalgia-function"] },
+      { heading: "Memory is rebuilt, not replayed", claimIds: ["trait-constructive-memory", "psy-misinformation"] },
+    ],
+    example:
+      "Hearing a song from your teenage years and suddenly feeling close to old friends is nostalgia doing what research suggests it does: lifting your mood and reminding you of people who matter.",
+    brainLink: {
+      text: "The hippocampus helps build the scenes we re-live and imagine. People with hippocampal damage struggled to imagine new experiences, not only to remember old ones.",
+      claimIds: ["trait-hippocampus-imagination"],
+    },
+    keepInMind: [
+      "Nostalgia research relies mostly on questionnaires and short experiments, so effects are averages over brief periods.",
+      "Feeling nostalgic is not the same as remembering accurately.",
+      "The hippocampus works with many areas of the cortex; memories are not stored in one place.",
     ],
     depth: "deep",
-    location: {
-      text: "Deep inside the inner (medial) temporal lobe, one on each side, just behind the amygdala.",
-      claimIds: ["hippo-location"],
-    },
-    functionClaimIds: ["hippo-hm", "hippo-binding", "hippo-consolidation"],
-    example:
-      "Walking back into the kitchen and suddenly remembering what you came for is context helping recall — the kind of “what, where, when” memory the hippocampus helps bind together.",
-    worksWith: [
-      { label: "Temporal and other cortex", regionId: "temporal-cortex", text: "Neighbouring medial temporal cortex and wider cortical networks.", claimIds: ["temporal-medial-memory", "memory-distributed"] },
-      { label: "Prefrontal cortex", regionId: "prefrontal-cortex", text: "Complementary roles in remembering events.", claimIds: ["pfc-hippocampus-memory"] },
-      { label: "Amygdala", regionId: "amygdala", text: "Emotion can strengthen hippocampus-dependent memories.", claimIds: ["amyg-memory-modulation"] },
-    ],
-    simplifies: [
-      "Learning techniques such as self-testing and spacing were studied in behaviour. Their benefits are not tied to the hippocampus alone.",
-      "Memories are not stored “in” the hippocampus like files; cortex plays a major part, and the relationship changes over time.",
-      "Memories for skills and habits rely more on other structures.",
-      "The hippocampus has subregions along its length that may contribute differently.",
-      "Its size and shape vary between people; our model shows an average from many brains.",
-    ],
-    deeperClaimIds: ["hippo-transformation", "hippo-spatial", "hippo-taxi", "hippo-sleep", "memory-skills-elsewhere"],
     relatedLessonIds: ["memory", "emotion"],
-    keywords: ["memory", "episodic", "H.M.", "place cells", "navigation", "consolidation", "sleep", "medial temporal", "remembering", "forgetting", "studying", "learning", "exam", "revision", "context"],
+    keywords: ["nostalgia", "memory", "remembering", "the past", "reminiscing", "sentimental", "imagination", "future", "loneliness", "hippocampus"],
   },
   {
     id: "amygdala",
     name: "Amygdala",
     shortName: "Amygdala",
-    mindTag: "Emotion",
-    groupingNote:
-      "A deep cluster of nuclei, one in each hemisphere. Shown inside the model through a faded outer surface — it is not visible on the brain's exterior.",
+    trait: "Emotional sensitivity",
+    tagline: "How strongly you react to threat, frustration, and loss.",
     intro:
-      "Why does a snake-shaped stick make you jump, and why do emotional moments feel so vivid? Psychology studies how emotions arise, grab attention, colour memory, and can be managed. The amygdala, deep in each temporal lobe, contributes to flagging what is emotionally important — but it is not a “fear center”: it works within larger networks.",
-    psychology: [
-      { concept: "Emotions depend on how we read a situation", claimIds: ["psy-appraisal"] },
-      { concept: "Threats grab attention", claimIds: ["psy-threat-attention"] },
-      { concept: "Vivid memories aren't always accurate", claimIds: ["psy-flashbulb"] },
-      { concept: "Putting feelings into words", claimIds: ["psy-affect-labeling"] },
+      "Some people feel worry, irritation, or sadness quickly and intensely; others stay calm even under real pressure. Psychologists call this dimension neuroticism, one of the Big Five personality traits. Despite the unflattering name, it describes normal variation between people, and how someone handles their emotions matters too.",
+    facts: [
+      { heading: "What the trait describes", claimIds: ["trait-neuroticism-definition"] },
+      { heading: "Why it matters", claimIds: ["trait-neuroticism-health"] },
+      { heading: "It tends to ease with age", claimIds: ["trait-maturity"] },
+      { heading: "Threats grab attention", claimIds: ["psy-threat-attention"] },
+      { heading: "How you handle feelings matters", claimIds: ["psy-reappraisal-vs-suppression"] },
+    ],
+    example:
+      "Replaying an awkward comment for hours while a friend shrugs off the same moment within minutes shows how differently people can respond to the same small setback.",
+    brainLink: {
+      text: "The amygdala helps flag what is emotionally important and influences attention and memory. It is not a “fear center”: emotions involve networks across the brain.",
+      claimIds: ["amyg-roles", "amyg-not-fear-center"],
+    },
+    keepInMind: [
+      "Neuroticism is a dimension everyone sits somewhere on. It is not a medical label.",
+      "Personality questionnaires describe tendencies across many situations, not how someone feels in a given moment.",
+      "Group-level links to health cannot predict what will happen to any one person.",
     ],
     depth: "deep",
-    location: {
-      text: "Deep in the front of the inner temporal lobe, one on each side, just in front of the hippocampus.",
-      claimIds: ["amyg-location"],
-    },
-    functionClaimIds: ["amyg-roles", "amyg-memory-modulation", "amyg-not-fear-center"],
-    example:
-      "You jump at a stick on a hiking trail before realising it isn't a snake. Flagging potentially important events like this involves the amygdala together with sensory, attention, and body-regulation systems.",
-    worksWith: [
-      { label: "Hippocampus", regionId: "hippocampus", text: "Emotion and memory interact.", claimIds: ["amyg-memory-modulation"] },
-      { label: "Prefrontal cortex", regionId: "prefrontal-cortex", text: "Regulating emotional responses.", claimIds: ["emotion-regulation-network"] },
-      { label: "Sensory cortex", regionId: "occipital-cortex", text: "Emotional significance can modulate perception.", claimIds: ["amyg-attention"] },
-      { label: "Hypothalamus and brainstem", text: "Body responses such as changes in heart rate (not shown separately).", claimIds: ["emotion-network"] },
-    ],
-    simplifies: [
-      "Emotion research in psychology measures feelings, behaviour, and body responses. Amygdala activity is only one part of that picture.",
-      "Calling it the “fear center” is misleading: it is involved in reward, novelty, and social information too, and fear involves many regions.",
-      "It contains several nuclei with different connections, shown here as one shape.",
-      "Activity in the amygdala is not the same thing as a feeling.",
-      "Much of the detailed circuit evidence comes from animal research.",
-    ],
-    deeperClaimIds: ["amyg-fear-learning", "amyg-reward", "amyg-sm", "amyg-lesion-perception", "amyg-fear-debate", "amyg-mtl-encoding", "emotion-memory-details"],
     relatedLessonIds: ["emotion", "attention", "memory"],
-    keywords: ["emotion", "fear", "threat", "reward", "almond", "salience", "limbic", "feelings", "flashbulb", "appraisal", "emotion regulation"],
+    keywords: ["emotional sensitivity", "neuroticism", "anxiety", "worry", "stress", "emotion", "fear", "threat", "big five", "emotion regulation", "amygdala"],
   },
 ];

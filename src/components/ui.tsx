@@ -30,7 +30,7 @@ export function Wordmark() {
         <rect width="64" height="64" rx="18" fill="#111a22" />
         <path d="M31 15c-8 0-14 6-14 13 0 3 1 5 2 7-2 2-2 5-1 7 2 4 7 6 13 6V15zm2 0c8 0 14 6 14 13 0 3-1 5-2 7 2 2 2 5 1 7-2 4-7 6-13 6V15z" fill="#bfe9e4" />
       </svg>
-      Mind Atlas
+      Psyna
     </span>
   );
 }

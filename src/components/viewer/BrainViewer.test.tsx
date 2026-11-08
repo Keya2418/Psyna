@@ -26,7 +26,7 @@ describe("BrainViewer fallback", () => {
     render(<BrainViewer {...baseProps} onSelectRegion={onSelect} />);
 
     expect(await screen.findByText(/3D graphics aren.t available/)).toBeInTheDocument();
-    const temporal = screen.getByRole("button", { name: /^Temporal cortex/ });
+    const temporal = screen.getByRole("button", { name: /^Empathy: Temporal cortex/ });
     await user.click(temporal);
     expect(onSelect).toHaveBeenCalledWith("temporal-cortex");
 

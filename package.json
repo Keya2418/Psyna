@@ -1,8 +1,8 @@
 {
-  "name": "mind-atlas",
+  "name": "psyna",
   "version": "0.1.0",
   "private": true,
-  "description": "Mind Atlas — an educational, interactive 3D brain explorer.",
+  "description": "Psyna — an interactive 3D brain that explains psychological traits.",
   "scripts": {
     "dev": "next dev",
     "build": "next build",

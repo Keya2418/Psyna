@@ -6,9 +6,7 @@ import type { LessonId, RegionId } from "@/content/types";
 import { atlasReducer, getHighlightedRegionIds, initialAtlasState, shouldRevealInternal } from "@/lib/atlasState";
 import { usePrefersReducedMotion } from "@/lib/hooks";
 import { loadPersisted, savePersisted, type Preferences } from "@/lib/storage";
-import { InfoCards } from "./InfoCards";
 import { LessonPanel, LessonPicker, RegionPanel, WelcomePanel } from "./Panels";
-import { RegionList } from "./RegionList";
 import { AboutSection, Footer, SourcesSection, TextGuide } from "./Sections";
 import { ArrowDisc, Button, Icon, Wordmark } from "./ui";
 import { BrainViewer } from "./viewer/BrainViewer";
@@ -16,7 +14,7 @@ import { ViewerControls } from "./ViewerControls";
 
 const LESSON_IDS = new Set<string>(lessons.map((l) => l.id));
 
-export function MindAtlasApp() {
+export function PsynaApp() {
   const [state, dispatch] = useReducer(atlasReducer, initialAtlasState);
   const [motionPref, setMotionPref] = useState<Preferences["motion"]>("system");
   const [viewerMode, setViewerMode] = useState<"3d" | "2d">("3d");
@@ -25,7 +23,6 @@ export function MindAtlasApp() {
   const reducedMotion = motionPref === "reduced" || (motionPref === "system" && systemReduced);
   const panelRef = useRef<HTMLDivElement>(null);
   const panelScrollRef = useRef<HTMLDivElement>(null);
-  const regionListRef = useRef<HTMLDivElement>(null);
 
   const highlightedIds = useMemo(() => getHighlightedRegionIds(state), [state]);
 
@@ -74,15 +71,16 @@ export function MindAtlasApp() {
   };
   const explore = () => {
     dispatch({ type: "showWelcome" });
-    const first = regionListRef.current?.querySelector<HTMLButtonElement>("ul button");
-    if (!isDesktop()) document.getElementById("viewer")?.scrollIntoView({ behavior: reducedMotion ? "auto" : "smooth", block: "center" });
-    first?.focus({ preventScroll: !isDesktop() ? true : false });
+    const viewer = document.getElementById("viewer");
+    if (!isDesktop()) viewer?.scrollIntoView({ behavior: reducedMotion ? "auto" : "smooth", block: "center" });
+    // Move keyboard focus to the first selectable brain area (3D marker or 2D map region).
+    viewer?.querySelector<HTMLElement>('button.marker, [role="button"][tabindex="0"]')?.focus({ preventScroll: !isDesktop() });
   };
 
   const selectedRegion = state.selectedRegionId ? getRegion(state.selectedRegionId) : undefined;
   const announcement =
     state.panel === "region" && selectedRegion
-      ? `${selectedRegion.name} selected.`
+      ? `${selectedRegion.name} selected: ${selectedRegion.trait}.`
       : state.panel === "lesson" && state.lesson
         ? state.lesson.finished
           ? "Lesson complete."
@@ -98,7 +96,6 @@ export function MindAtlasApp() {
             inLesson={!!state.lesson}
             onClose={() => dispatch({ type: "closeRegion" })}
             onResumeLesson={() => dispatch({ type: "resumeLesson" })}
-            onSelectRegion={selectRegion}
             onStartLesson={startLesson}
           />
         ) : null;
@@ -130,14 +127,14 @@ export function MindAtlasApp() {
       <div className="atlas-surface mx-auto max-w-[1520px] overflow-hidden rounded-[28px] lg:rounded-[var(--radius-surface)]">
         {/* Header */}
         <header className="relative z-20 flex flex-wrap items-center justify-between gap-3 px-4 pt-4 sm:px-6 lg:px-10 lg:pt-7">
-          <a href="#explore" className="rounded-xl" aria-label="Mind Atlas, home">
+          <a href="#explore" className="rounded-xl" aria-label="Psyna, home">
             <Wordmark />
           </a>
           <nav aria-label="Main" className="order-3 w-full sm:order-none sm:w-auto">
             <ul className="glass-pill mx-auto flex w-max items-center gap-0.5 rounded-full p-1 text-[0.875rem] font-medium">
               {[
                 ["Explore", "#explore"],
-                ["Text guide", "#text-guide"],
+                ["Facts", "#text-guide"],
                 ["Sources", "#sources"],
                 ["About", "#about"],
               ].map(([label, href], i) => (
@@ -156,7 +153,7 @@ export function MindAtlasApp() {
 
         <main
           id="explore"
-          className="relative grid scroll-mt-4 grid-cols-1 gap-4 px-3 pb-5 pt-4 sm:px-6 lg:h-[calc(100dvh-7.5rem)] lg:max-h-[940px] lg:min-h-[660px] lg:grid-cols-[minmax(340px,0.92fr)_minmax(0,1.55fr)_minmax(270px,0.66fr)] lg:grid-rows-[minmax(0,1fr)_auto] lg:gap-6 lg:px-10 lg:pb-8 lg:pt-6"
+          className="relative grid scroll-mt-4 grid-cols-1 gap-4 px-3 pb-5 pt-4 sm:px-6 lg:h-[calc(100dvh-7.5rem)] lg:max-h-[940px] lg:min-h-[660px] lg:grid-cols-[minmax(340px,0.92fr)_minmax(0,1.9fr)] lg:grid-rows-[minmax(0,1fr)_auto] lg:gap-6 lg:px-10 lg:pb-8 lg:pt-6"
         >
           {/* Mobile hero (desktop shows it in the left panel) */}
           {state.panel === "welcome" && (
@@ -167,11 +164,10 @@ export function MindAtlasApp() {
                 <span className="font-normal italic">Understand</span> everyday life.
               </h1>
               <p className="mt-3 text-[1rem] leading-relaxed text-ink-soft">
-                Discover the psychology of memory, attention, and emotion — and the brain areas that support them.
+                Select any part of the brain to discover a psychological trait, explained through published research.
               </p>
               <div className="mt-4 flex flex-wrap gap-2">
                 <Button variant="primary" onClick={explore}>Explore the brain <ArrowDisc /></Button>
-                <Button variant="ghost" onClick={showLessons} className="underline decoration-ink/25 underline-offset-4">Start a guided lesson</Button>
               </div>
             </div>
           )}
@@ -185,7 +181,7 @@ export function MindAtlasApp() {
           >
             {state.panel === "welcome" ? (
               <div className="h-full overflow-y-auto pr-2 pt-6 scroll-soft">
-                <WelcomePanel onExplore={explore} onLessons={showLessons} />
+                <WelcomePanel onExplore={explore} />
               </div>
             ) : (
               <div ref={panelScrollRef} className="glass-strong scroll-soft h-full overflow-y-auto rounded-[var(--radius-glass)] p-5 [overflow-anchor:none] sm:p-6">{panel}</div>
@@ -229,28 +225,16 @@ export function MindAtlasApp() {
             </div>
             {selectedRegion && state.panel === "region" && (
               <a href="#main-panel" className="mx-auto mt-3 inline-flex min-h-10 items-center gap-2 rounded-full bg-night px-4 text-[0.875rem] font-medium text-white lg:hidden">
-                Read about the {selectedRegion.name.toLowerCase()} <Icon.ArrowRight width={14} height={14} className="rotate-90" />
+                Read about {selectedRegion.trait.toLowerCase()} <Icon.ArrowRight width={14} height={14} className="rotate-90" />
               </a>
             )}
           </section>
 
-          {/* Right: info card + region list */}
-          <div className="order-4 lg:order-none lg:col-start-3 lg:row-start-1 lg:min-h-0 lg:overflow-y-auto lg:rounded-[var(--radius-glass)] scroll-soft">
-            <InfoCards />
-          </div>
-          <div ref={regionListRef} className="glass order-2 rounded-[var(--radius-glass)] p-4 lg:order-none lg:col-start-3 lg:row-start-2">
-            <div className="lg:hidden">
-              <RegionList selectedId={state.selectedRegionId} highlightedIds={highlightedIds} onSelect={(id) => { selectRegion(id); revealPanelOnMobile(); }} layout="row" />
-            </div>
-            <div className="hidden lg:block">
-              <RegionList selectedId={state.selectedRegionId} highlightedIds={highlightedIds} onSelect={selectRegion} layout="grid" />
-            </div>
-          </div>
         </main>
       </div>
 
       <div className="mx-auto mt-4 max-w-[1520px] space-y-4 lg:mt-6 lg:space-y-6">
-        <TextGuide onSelectRegion={(id) => { selectRegion(id); document.getElementById("explore")?.scrollIntoView({ behavior: reducedMotion ? "auto" : "smooth" }); }} onStartLesson={(id) => { startLesson(id); document.getElementById("explore")?.scrollIntoView({ behavior: reducedMotion ? "auto" : "smooth" }); }} />
+        <TextGuide />
         <SourcesSection />
         <AboutSection />
         <Footer />

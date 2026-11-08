@@ -1,12 +1,12 @@
-# Mind Atlas
+# Psyna
 
-An educational web app for curious beginners: explore the **psychology of memory, attention, and emotion** — classic findings about how people remember, focus, and feel — on an interactive 3D glass brain that shows the brain areas linked to them. Every claim links to a source.
+An educational web app for curious beginners: select any part of an interactive 3D glass brain to discover a **psychological trait**, explained through findings from published research. Every claim links to a source.
 
-- **Explore:** rotate and zoom a 3D brain built from open atlas data, and select six broad region groups (prefrontal, parietal, temporal, occipital, hippocampus, amygdala) by marker, by clicking the surface, or from a searchable list. Each panel leads with the psychology (e.g. working memory limits, inattentional blindness, the testing effect, emotion regulation); the neuroscience sits behind a “deeper detail” expander.
+- **Explore:** rotate and zoom a 3D brain built from open atlas data, and select six broad region groups by marker, by clicking the surface, or in the labelled 2D view. Each one opens a trait: prefrontal cortex → **self-control**, parietal cortex → **mind-wandering**, temporal cortex → **empathy**, occipital cortex → **mental imagery**, hippocampus → **nostalgia**, amygdala → **emotional sensitivity** (neuroticism). Each panel covers what research shows, an everyday example, what to keep in mind, and a brief, cautious note on the brain connection.
 - **Guided lessons:** three six-step psychology lessons (*How does memory really work?*, *Why can't we pay attention to everything?*, *What are emotions, and how do we manage them?*). Each step pairs a behavioural finding with an everyday example and a short “brain link”, and highlights the related areas. Back / Next / Replay / Exit.
-- **Readable everywhere:** a complete text guide, a labelled 2D anatomy view, and a solid-material view. All content works without WebGL.
+- **Psychology facts:** every trait's research findings as plain readable text, without the brain detail. Together with a labelled 2D anatomy view and a solid-material view, all content works without WebGL.
 
-> Educational use only. Mind Atlas does not diagnose, assess, or give medical advice.
+> Educational use only. Psyna does not diagnose, assess, or give medical advice.
 
 ## Quick start
 
@@ -37,7 +37,7 @@ Next.js 16 (App Router) · React 19 · TypeScript · Tailwind CSS 4 · React Thr
 
 ```
 src/app/                 layout, page, global styles (glass design tokens)
-src/components/          UI: panels, region list, controls, 2D map, sections
+src/components/          UI: panels, controls, 2D map, sections
 src/components/viewer/   WebGL viewer (lazy-loaded): BrainCanvas, materials, BrainViewer wrapper
 src/content/             typed educational content + validation (see docs/CONTENT_GUIDE.md)
 src/lib/                 state reducer, storage, hooks
@@ -48,18 +48,18 @@ e2e/                     Playwright tests
 
 ## How it works
 
-- **State** lives in one reducer (`src/lib/atlasState.ts`). Highlighted regions are *derived* from the current panel (selected region or lesson step), so content, list, and 3D highlights can't drift apart. Each camera move is a keyed request; a new request cancels the previous transition, and any user drag interrupts it.
+- **State** lives in one reducer (`src/lib/atlasState.ts`). Highlighted regions are *derived* from the current panel (selected region or lesson step), so content and 3D highlights can't drift apart. Each camera move is a keyed request; a new request cancels the previous transition, and any user drag interrupts it.
 - **The viewer** is a client-only dynamic import, so three.js lives in its own lazily loaded chunk. Rendering is on demand (`frameloop="demand"`): nothing renders while the scene is idle or the tab is hidden. Pixel ratio is capped at 1.75, and there is no post-processing. Materials and geometry are shared. Markers are real `<button>`s positioned each rendered frame without React re-renders.
 - **Glass material:** a clear-coated `MeshPhysicalMaterial` whose opacity rises at grazing angles (Fresnel-like), with a depth pre-pass so only the front-most surface is shaded, which avoids transparency sorting artifacts. Deep structures render opaque inside. Selected surface regions also get a dark outline (their mesh boundary edges) and a persistent label, so selection doesn't rely on colour alone.
-- **Accessibility:** every function is available through HTML controls (region list with search, toolbar, lesson buttons) with visible focus rings. There is a skip link, live-region announcements, and reduced-motion support (system setting or the in-app toggle). Contrast is checked against the frosted surfaces, and there is a solid fallback when `backdrop-filter` is unsupported or `prefers-contrast: more` is set.
+- **Accessibility:** every function is available through HTML controls (3D markers and 2D map regions are real buttons; toolbar and lesson buttons) with visible focus rings. There is a skip link, live-region announcements, and reduced-motion support (system setting or the in-app toggle). Contrast is checked against the frosted surfaces, and there is a solid fallback when `backdrop-filter` is unsupported or `prefers-contrast: more` is set.
 - **Storage:** completed lessons and preferences (material, motion) are saved in `localStorage`. Unavailable, full, or malformed storage falls back to defaults.
 
 ## Verification performed
 
 - `npm run typecheck`, `npm run lint`, and `npm run build` pass.
-- `npm test`: 35 tests. Content/citation/mapping validation (including mesh names read from the GLB, and that every panel and lesson step leads with a cited psychology finding), reducer behaviour (selection, lesson navigation, exit restoring state), storage failure modes, app-level selection and lesson flows with persistence, and the WebGL-unavailable 2D fallback.
+- `npm test`: 35 tests. Content/citation/mapping validation (including mesh names read from the GLB, that every brain area explains a distinct trait backed by cited psychology findings, and that every lesson step leads with a cited psychology finding), reducer behaviour (selection, lesson navigation, exit restoring state), storage failure modes, app-level selection and lesson flows with persistence, and the WebGL-unavailable 2D fallback.
 - `npx playwright test`: 6 end-to-end tests in headless Chromium with software WebGL (SwiftShader):
-  - the model loads; keyboard selection works and focus is visible
+  - the model loads; keyboard selection of a marker works and focus is visible
   - dragging rotates without selecting, and a click selects
   - marker click and lesson highlight sync, and Exit restores the explore view
   - model-load failure shows an error, retry works, and content stays usable
@@ -70,11 +70,11 @@ e2e/                     Playwright tests
 ## Known limitations
 
 **Scientific review**
-- The content was researched and written from the cited sources. Each source's metadata was confirmed via Crossref/PubMed (papers) or by reading the page (websites): neuroscience sources on 2026-11-04, psychology sources on 2026-11-05. Claim wording was checked against **abstracts**, not full texts, except for the web pages. Three psychology abstracts came from OpenAlex because PubMed has none (Posner 1980, MacLeod 1991, Godden & Baddeley 1975). Moors et al. 2013 has no abstract, so its claim was checked against the article's opening section.
+- The content was researched and written from the cited sources. Each source's metadata was confirmed via Crossref/PubMed (papers) or by reading the page (websites): neuroscience sources on 2026-11-04, psychology sources on 2026-11-05, trait sources on 2026-11-07. Claim wording was checked against **abstracts**, not full texts, except for the web pages. Three psychology abstracts came from OpenAlex because PubMed has none (Posner 1980, MacLeod 1991, Godden & Baddeley 1975). Moors et al. 2013 has no abstract, so its claim was checked against the article's opening section.
 - The content has **not** been reviewed by an independent psychologist, neuroscientist, or clinician. A domain-expert review is recommended before wider publication.
 - Several classic psychology studies are small or unusual (e.g. single-person forgetting-curve studies, one cohort for flashbulb memories, divers in context-dependent memory). Their caveats are shown next to each claim.
-- Psychology concepts are listed under the brain area most often linked to them. Behavioural findings such as the testing effect or switch costs are not properly attributed to one area, and the panels say so under “What this explanation simplifies”.
-- One source (Scoville & Milner 1957) has no abstract in PubMed. The claim citing it is also supported by a verified review (Squire & Wixted 2011).
+- Pairing one trait with one brain area is a teaching device, not a finding. Traits emerge from many interacting areas, and a large study (Avinun et al. 2020) found almost no reliable links between Big Five traits and brain structure. Every panel shows that caveat under “The brain connection”.
+- One source (Zeman et al. 2015, on aphantasia) has no abstract in PubMed. The claim citing it is also supported by a verified review (Pearson 2019).
 
 **Asset and rendering**
 - The model is an average adult brain (MNI ICBM152 2009c), so folds are softer than in an individual brain. Region boundaries are approximate atlas groupings; "prefrontal" includes some premotor cortex. See ASSET_CREDITS.md.
